@@ -6,7 +6,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            backgroundImage: {
+                "auth-image": "url('/images/login.jpg')",
+            },
+        },
     },
     plugins: [],
 };

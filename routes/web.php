@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,29 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('index');
+    if (Auth::check()) {
+        if (Auth::user()->hasRole('admin'))
+            return redirect('admin');
+        // elseif(Auth::user()->hasRole('user'))
+        // return redirect('user.dashboard');
+    } else
+        return view('index');
+});
+
+Route::get('admin', function () {
+    if (Auth::check()) {
+        return view('admin.index'); //admin dashboard
+    } else
+        return redirect('login');
+});
+
+Route::view('login', 'auth.login');
+Route::post('login', [AuthController::class, 'login']);
+
+Route::get('auth', function () {
+    return view('auth.login');
 });
 Route::group(['middleware' => ['role:admin']], function () {
-    // Route::view('admin', 'admin.index');
-
 });
 Route::group(['middleware' => ['role:user']], function () {
     // Route::view('user', 'user.index');
