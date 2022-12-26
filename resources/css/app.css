@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    thead th {
+        @apply text-left;
+    }
     input {
         @apply bg-transparent border border-gray-300  focus:border-green-800 outline-none  text-base text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }
@@ -60,5 +63,14 @@
     }
     .bullet-indigo-sm {
         @apply flex-shrink-0 w-2 h-2 rounded-full bg-indigo-500;
+    }
+    .pallette {
+        @apply flex flex-1 justify-between items-center p-5 shadow-lg;
+    }
+    .pallette h1 {
+        @apply text-sm font-bold;
+    }
+    .pallette p {
+        @apply text-sm text-slate-600;
     }
 }

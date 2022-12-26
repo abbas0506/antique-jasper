@@ -1,6 +1,6 @@
 <div class="flex w-full p-5 justify-between bg-gradient-to-b from-teal-700 to-teal-500">
     <div class="flex flex-1">
-        Dashobard
+        Admin
     </div>
     <div class="flex space-x-4 text-slate-200">
         <div>
