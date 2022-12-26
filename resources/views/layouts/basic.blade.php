@@ -10,6 +10,11 @@
     @vite(['resources/js/app.js','resources/css/app.css'])
     <!-- <link rel="stylesheet" href="{{asset('/build/assets/app.css')}}">
     <script src="{{asset('/build/assets/app.js')}}"></script> -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+    </style>
 </head>
 
 <body>

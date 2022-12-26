@@ -6,6 +6,10 @@
     thead th {
         @apply text-left;
     }
+
+    tbody tr td {
+        @apply text-sm py-2;
+    }
     input {
         @apply bg-transparent border border-gray-300  focus:border-green-800 outline-none  text-base text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }

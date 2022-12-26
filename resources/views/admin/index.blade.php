@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 @section('data')
 <section class="p-8">
-    <div class="grid grid-cols-3 space-x-5">
+    <div class="text-blue-600 text-lg">Dashboard</div>
+    <div class="text-sm text-slate-500">Login > dashboard</div>
+    <div class="grid grid-cols-3 space-x-5 mt-8">
         <!-- pallette -->
         <a href='' class="pallette">
             <div class="flex flex-1 flex-col ">
@@ -59,7 +61,7 @@
             </tr>
         </thead>
         <tbody>
-            @for($i=0; $i<8;$i++) <tr class="even:bg-slate-200">
+            @for($i=0; $i<18;$i++) <tr class="even:bg-slate-200">
                 <td>Order ID</td>
                 <td>Product Name</td>
                 <td>Qty</td>
