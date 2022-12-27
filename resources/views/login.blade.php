@@ -5,8 +5,8 @@
         <div class="w-1/3 mb-8">
             <img src="{{asset('/images/cart.png')}}" alt="">
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold text-green-700">Website Name</h1>
-        <p class="text-2xl md:text-4xl font-thin text-green-700">Website Description</p>
+        <h1 class="text-4xl md:text-6xl font-bold text-green-700">Shehbaz Mart</h1>
+        <p class="text-2xl md:text-4xl font-thin text-green-700">e-commerce application</p>
     </div>
     <div class="flex flex-col items-center justify-center flex-1">
         <div class="w-4/5 md:w-2/3">

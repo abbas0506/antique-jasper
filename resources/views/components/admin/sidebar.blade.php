@@ -1,7 +1,7 @@
 <aside aria-label="Sidebar" id='sidebar' class="h-full shadow-xl text-slate-700 ">
     <div class="flex justify-center">
         <!-- <img src="{{asset('/images/login.jpg')}}" alt="" width=150> -->
-        <div class="text-2xl p-5 border-b border-teal-600 text-teal-800 font-bold">Website Name</div>
+        <div class="text-2xl p-5 border-b border-teal-600 text-teal-800 font-bold">Shehbaz Mart</div>
     </div>
     <div class="mt-12 px-5">
         <ul class="space-y-2">

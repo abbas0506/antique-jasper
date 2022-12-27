@@ -32,12 +32,10 @@ Route::get('admin', function () {
         return redirect('login');
 });
 
-Route::view('login', 'auth.login');
+Route::view('login', 'login');
 Route::post('login', [AuthController::class, 'login']);
+Route::get('signout', [AuthController::class, 'signout']);
 
-Route::get('auth', function () {
-    return view('auth.login');
-});
 Route::group(['middleware' => ['role:admin']], function () {
 });
 Route::group(['middleware' => ['role:user']], function () {
