@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Country;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class ConfigController extends Controller
     {
         $countries = Country::all();
         $categories = Category::all();
-        $subcategories = Subcategory::all();
+        $products = Product::all();
 
-        return view('admin.config.index', compact('countries', 'categories', 'subcategories'));
+        return view('admin.config.index', compact('countries', 'categories', 'products'));
     }
 }

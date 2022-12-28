@@ -30,7 +30,9 @@
     .bread-crumb > a {
         @apply text-blue-600;
     }
-
+    aside a:hover {
+        @apply text-teal-700;
+    }
     .btn-indigo-rounded {
         @apply bg-indigo-600 hover:bg-indigo-500 text-white border-0 py-1 px-4 focus:outline-none rounded text-base;
     }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
+use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +18,10 @@ class AuthController extends Controller
     public function index()
     {
         //
+        $countries_count = Country::all()->count();
+        $categories_count = Subcategory::all()->count();
+        $products_count = Product::all()->count();
+        return view('admin.index', compact('countries_count', 'categories_count', 'products_count'));
     }
 
     public function login(Request $request)
@@ -106,5 +113,9 @@ class AuthController extends Controller
         session()->flush();
         Auth::logout();
         return redirect('/');
+    }
+    public function changepw()
+    {
+        return view('changepw');
     }
 }

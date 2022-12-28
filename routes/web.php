@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,14 +36,15 @@ Route::get('/', function () {
 
 Route::get('admin', function () {
     if (Auth::check()) {
-        return view('admin.index'); //admin dashboard
+        return redirect('dashboard'); //admin dashboard
     } else
         return redirect('login');
 });
-
+Route::get('dashboard', [AuthController::class, 'index']);
 Route::view('login', 'login');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('signout', [AuthController::class, 'signout']);
+Route::get('users.changepw', [AuthController::class, 'changepw'])->name('users.changepw');
 
 Route::group(['middleware' => ['role:admin']], function () {
 
