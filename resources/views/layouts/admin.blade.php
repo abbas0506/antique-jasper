@@ -8,7 +8,7 @@
     <div class="w-1/5"></div>
     <div class="flex flex-col flex-1 min-h-full bg-slate-100">
         <x-admin.header></x-admin.header>
-        @yield('data')
+        @yield('page-content')
 
 
     </div>

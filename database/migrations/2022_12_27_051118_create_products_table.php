@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedInteger('unitprice');
-            $table->unsignedInteger('product_type');
+            $table->unsignedInteger('product_type')->default(0);
             $table->unsignedBigInteger('subcategory_id');
 
             $table->foreign('subcategory_id')

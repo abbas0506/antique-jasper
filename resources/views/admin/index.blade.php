@@ -1,11 +1,12 @@
 @extends('layouts.admin')
-@section('data')
+@section('page-content')
 <section class="p-8">
-    <div class="text-blue-600 text-lg">Dashboard</div>
-    <div class="text-sm text-slate-500">Login > dashboard</div>
+    <h1 class="page-title">Dashboard</h1>
+    <p class="bread-crumb">Login > dashboard</p>
+
     <div class="grid grid-cols-3 space-x-5 mt-8">
         <!-- pallette -->
-        <a href='' class="pallette">
+        <a href="{{route('countries.index')}}" class="pallette">
             <div class="flex flex-1 flex-col ">
                 <h1 class="">Pending Orders</h1>
                 <p>125</p>

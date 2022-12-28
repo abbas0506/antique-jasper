@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Subcategory;
+use Exception;
 use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
@@ -36,6 +38,18 @@ class SubcategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:subcategories',
+            'category_id' => 'required',
+        ]);
+
+        try {
+            Subcategory::create($request->all());
+            return redirect()->route('categories.index')->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -47,6 +61,7 @@ class SubcategoryController extends Controller
     public function show(Subcategory $subcategory)
     {
         //
+        return view('admin.subcategories.show', compact('subcategory'));
     }
 
     /**
@@ -58,6 +73,7 @@ class SubcategoryController extends Controller
     public function edit(Subcategory $subcategory)
     {
         //
+        return view('admin.subcategories.edit', compact('subcategory'));
     }
 
     /**
@@ -70,6 +86,16 @@ class SubcategoryController extends Controller
     public function update(Request $request, Subcategory $subcategory)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:subcategories,name,' . $subcategory->id, 'id',
+        ]);
+
+        try {
+            $subcategory->update($request->all());
+            return redirect()->route('subcategories.show', $subcategory)->with('success', 'Successfully updated');;
+        } catch (Exception $ex) {
+            return redirect()->back()->withErrors($ex->getMessage());
+        }
     }
 
     /**
@@ -81,5 +107,18 @@ class SubcategoryController extends Controller
     public function destroy(Subcategory $subcategory)
     {
         //
+        try {
+            $subcategory->delete();
+            return redirect()->route('categories.index')->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
+    }
+    // associate new subcategory to parent category
+    public function add($id)
+    {
+        $category = Category::find($id);
+        return view('admin.subcategories.create', compact('category'));
     }
 }

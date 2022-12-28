@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                     </svg>
                     <div class="w-full">
-                        <input type="text" id='email' name='email' class='w-full' placeholder="Enter use id">
+                        <input type="text" id='email' name='email' class='input w-full' placeholder="Enter use id">
                     </div>
                 </div>
                 <div class="flex items-center mt-2 w-full">
@@ -31,7 +31,7 @@
                     </svg>
 
                     <div class="w-full">
-                        <input type="password" id='password' name='password' class="w-full" placeholder="Enter use id">
+                        <input type="password" id='password' name='password' class="input w-full" placeholder="Enter use id">
                         <!-- if validation error -->
                         @if ($errors->any())
                         <div class="text-red-600 text-sm mt-1">

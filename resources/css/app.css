@@ -4,20 +4,33 @@
 
 @layer base {
     thead th {
-        @apply text-left;
+        @apply text-left text-sm;
     }
 
     tbody tr td {
         @apply text-sm py-2;
     }
-    input {
-        @apply bg-transparent border border-gray-300  focus:border-green-800 outline-none  text-base text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    label {
+        @apply text-sm text-slate-500;
     }
 }
 @layer components {
-    .search-indigo-outlined {
-        @apply bg-opacity-50 border-b border-gray-300 focus:border-b focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    .input {
+        @apply bg-transparent border border-gray-300  focus:border-green-800 outline-none  text-base text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }
+    .search-box {
+        @apply bg-transparent border-b border-gray-300 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    }
+    .page-title {
+        @apply font-bold text-lg text-indigo-800 mb-1 tracking-wider;
+    }
+    .bread-crumb {
+        @apply text-sm text-slate-500 font-thin;
+    }
+    .bread-crumb > a {
+        @apply text-blue-600;
+    }
+
     .btn-indigo-rounded {
         @apply bg-indigo-600 hover:bg-indigo-500 text-white border-0 py-1 px-4 focus:outline-none rounded text-base;
     }

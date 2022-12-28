@@ -1,6 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CourierController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QueryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,6 +45,19 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('signout', [AuthController::class, 'signout']);
 
 Route::group(['middleware' => ['role:admin']], function () {
+
+    Route::resource('config', ConfigController::class)->only('index');
+    Route::resource('categories', CategoryController::class);
+    Route::resource('subcategories', SubcategoryController::class);
+
+    Route::get('subcategories.add/{id}', [SubcategoryController::class, 'add'])->name('subcategories.add');
+    Route::get('products.add/{id}', [ProductController::class, 'add'])->name('products.add');
+
+    Route::resource('products', ProductController::class);
+    Route::resource('countries', CountryController::class);
+    Route::resource('customers', CustomerController::class);
+    Route::resource('couriers', CourierController::class);
+    Route::resource('queries', QueryController::class);
 });
 Route::group(['middleware' => ['role:user']], function () {
     // Route::view('user', 'user.index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use Exception;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -15,6 +16,8 @@ class CountryController extends Controller
     public function index()
     {
         //
+        $countries = Country::all();
+        return view('admin.countries.index', compact('countries'));
     }
 
     /**
@@ -25,6 +28,7 @@ class CountryController extends Controller
     public function create()
     {
         //
+        return view('admin.countries.create');
     }
 
     /**
@@ -36,6 +40,17 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:countries',
+        ]);
+
+        try {
+            Country::create($request->all());
+            return redirect()->route('countries.index')->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -58,6 +73,7 @@ class CountryController extends Controller
     public function edit(Country $country)
     {
         //
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
@@ -70,6 +86,16 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:countries,name,' . $country->id, 'id',
+        ]);
+
+        try {
+            $country->update($request->all());
+            return redirect()->route('countries.index')->with('success', 'Successfully updated');;
+        } catch (Exception $ex) {
+            return redirect()->back()->withErrors($ex->getMessage());
+        }
     }
 
     /**
@@ -81,5 +107,12 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         //
+        try {
+            $country->delete();
+            return redirect()->back()->with('success', 'Successfully deleted');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 }
