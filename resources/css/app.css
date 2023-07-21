@@ -71,12 +71,13 @@
         @apply bg-red-100 text-red-700 px-4 py-3;
     }
 
-    .tab {
-        @apply px-2 text-slate-400 hover:text-slate-700 font-thin;
+    .tab1 {
+        @apply flex-grow border-b-2 border-gray-300 py-2 text-lg px-1;
     }
     .tab.active {
-        @apply font-bold text-teal-800 relative;
+        @apply flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1;
     }
+
     .tab.active .bullet {
         @apply absolute -top-1 left-0 bg-red-600 w-2 h-2 rounded-full;
     }
@@ -91,5 +92,22 @@
     }
     .pallette p {
         @apply text-sm text-slate-600;
+    }
+    .zoom {
+        @apply scale-150 transition-all duration-500 ease-in-out;
+    }
+
+    .img-magnifier-container {
+        position: relative;
+    }
+
+    .img-magnifier-glass {
+        position: absolute;
+        border: 1px solid #777;
+        border-radius: 50%;
+        cursor: none;
+        /*Set the size of the magnifier glass:*/
+        width: 150px;
+        height: 150px;
     }
 }

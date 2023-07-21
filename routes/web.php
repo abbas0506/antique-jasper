@@ -62,6 +62,5 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('queries', QueryController::class);
 });
 Route::group(['middleware' => ['role:user']], function () {
-    // Route::view('user', 'user.index');
-
+    Route::view('user', 'user.index');
 });

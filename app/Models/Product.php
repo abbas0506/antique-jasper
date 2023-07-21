@@ -12,6 +12,8 @@ class Product extends Model
         'name',
         'unitprice',
         'product_type',
+        'color',
+        'image',
         'subcategory_id'
     ];
 

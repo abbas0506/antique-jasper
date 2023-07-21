@@ -5,6 +5,7 @@
     <div class="bread-crumb">
         <a href="{{route('config.index')}}"> Config </a> >
         <a href="{{route('categories.index')}}">Categories </a> >
+        {{$subcategory->category->name}} >
         Sub Category : {{$subcategory->name}}
     </div>
     <div class="container w-full md:w-4/5 mx-auto mt-16">
@@ -39,7 +40,7 @@
 
 
                 <tr class="tr border">
-                    <td class="border text-center p-3">
+                    <td class="border bg-white text-center p-3">
                         <div>
                             <h1 class="font-bold">{{$subcategory->name}}</h1>
                             <p class="text-xs font-thin">[{{$subcategory->category->name}}]</p>
@@ -47,12 +48,12 @@
                         </div>
 
                         <div class="flex items-center justify-center space-x-2 mt-2">
-                            <a href="{{route('subcategories.edit', $subcategory)}}" class="ml-3 text-green-300 hover:text-green-800">
+                            <a href="{{route('subcategories.edit', $subcategory)}}" class="ml-3 text-green-300 hover:text-green-800 hover:zoom">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                 </svg>
                             </a>
-                            <form action="{{route('subcategories.destroy',$subcategory)}}" method="POST" id='del_form{{$subcategory->id}}' class="mt-1 flex justify-center">
+                            <form action="{{route('subcategories.destroy',$subcategory)}}" method="POST" id='del_form{{$subcategory->id}}' class="mt-1 flex justify-center hover:zoom">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="flex items-center text-red-300 hover:text-red-800" onclick="delme('{{$subcategory->id}}')">
@@ -63,13 +64,13 @@
                             </form>
                         </div>
                     </td>
-                    <td class="p-3 border text-slate-600">
+                    <td class="p-3 border text-slate-600 bg-white">
                         <div class="grid grid-cols-3 gap-2 text-sm">
                             @foreach($subcategory->products as $product)
-                            <a href="{{route('products.show',$product)}}" class="border text-center hover:bg-blue-200 hover:text-blue-800 transition-all duration-200 ease-in-out">{{$product->name}}</a>
+                            <a href="{{route('products.show',$product)}}" class="border text-center hover:bg-slate-100 hover:text-blue-800 transition-all duration-200 ease-in-out">{{$product->name}}</a>
                             @endforeach
                             <!-- add new subcategory button -->
-                            <a href="{{route('products.add',$subcategory)}}" class="flex w-full border justify-center items-center border-dashed border-slate-300 hover:bg-teal-600 hover:text-slate-50">
+                            <a href="{{route('products.add',$subcategory)}}" class="flex w-full border justify-center items-center border-dashed border-slate-300 hover:bg-slate-100 hover:text-blue-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                                 </svg>

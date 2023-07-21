@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->unsignedInteger('unitprice');
             $table->unsignedInteger('product_type')->default(0);
+            $table->string('color')->nullable();
+            $table->string('image');
             $table->unsignedBigInteger('subcategory_id');
 
             $table->foreign('subcategory_id')

@@ -20,20 +20,47 @@
         </div>
         @endif
 
-        <h1 class="font-bold text-red-600 mt-8"> Category : <span class="text-sm font-thin text-slate-600">[ {{$subcategory->name}} > {{$subcategory->category->name}} ]</span></h1>
-        <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full" onsubmit="return validate(event)">
+        <h1 class="font-bold text-red-600 mt-8"> Category : <span class="text-sm font-thin text-slate-600">[ {{$subcategory->category->name}} > {{$subcategory->name}} ]</span></h1>
+
+
+        <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full" enctype="multipart/form-data" onsubmit="return validate(event)">
             @csrf
-            <input type="hidden" name="subcategory_id" value="{{$subcategory->id}}">
-            <label for="" class='mt-8'>Product Name</label>
-            <input type="text" id='name' name='name' class="input" placeholder="Tea Cup">
+            <div class="flex w-full space-x-8 mt-8">
+                <div class="flex flex-col flex-1">
+                    <input type="hidden" name="subcategory_id" value="{{$subcategory->id}}">
+                    <label for="" class=''>Product Name</label>
+                    <input type="text" id='name' name='name' class="input" placeholder="Tea Cup">
 
-            <label for="" class='mt-3'>Unit Price</label>
-            <input type="number" id='unitprice' name='unitprice' class="input" placeholder="price">
+                    <label for="" class='mt-3'>Unit Price</label>
+                    <input type="number" id='unitprice' name='unitprice' class="input" placeholder="price">
 
+                    <div class="flex items-center space-x-8 mt-3">
+                        <div class="flex items-center space-x-2">
+                            <input type="checkbox" class="w-4 h-4" id='chk_color' name="has_color" onchange="toggleColor()">
+                            <label for="">Has Color</label>
+                        </div>
+
+                        <input type="color" id='color' name='color' class="input hidden" placeholder="color">
+
+                    </div>
+
+                    <label for="" class="mt-3">Image</label>
+                    <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()' required>
+
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="{{asset('images/no-image.png')}}" alt="" id='preview_img' class="w-60">
+                </div>
+            </div>
             <div class="flex items-center justify-end mt-4 py-2">
                 <button type="submit" class="btn-indigo-rounded">Save</button>
             </div>
+
         </form>
+
+
+
+
     </div>
 </section>
 @endsection
@@ -51,6 +78,20 @@
             });
         }
         return validated;
+    }
+
+    function toggleColor() {
+        if ($('#chk_color').prop('checked'))
+            $('#color').show();
+        else
+            $('#color').hide();
+    }
+
+    function preview_pic() {
+        const [file] = pic.files
+        if (file) {
+            preview_img.src = URL.createObjectURL(file)
+        }
     }
 </script>
 @endsection

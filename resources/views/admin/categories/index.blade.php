@@ -49,16 +49,16 @@
 
                 @foreach($categories->sortByDesc('id') as $category)
                 <tr class="tr border">
-                    <td class="border text-center p-3">
+                    <td class="border text-center p-3 bg-white">
                         <div>{{$category->name}}</div>
 
                         <div class="flex items-center justify-center space-x-2 mt-2">
-                            <a href="{{route('categories.edit', $category)}}" class="ml-3 text-green-300 hover:text-green-800">
+                            <a href="{{route('categories.edit', $category)}}" class="ml-3 text-green-300 hover:text-green-800 hover:scale-150 hover:zoom">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                 </svg>
                             </a>
-                            <form action="{{route('categories.destroy',$category)}}" method="POST" id='del_form{{$category->id}}' class="mt-1 flex justify-center">
+                            <form action="{{route('categories.destroy',$category)}}" method="POST" id='del_form{{$category->id}}' class="mt-1 flex justify-center hover:zoom">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="flex items-center text-red-300 hover:text-red-800" onclick="delme('{{$category->id}}')">
@@ -69,13 +69,13 @@
                             </form>
                         </div>
                     </td>
-                    <td class="p-3 border text-slate-600">
+                    <td class="p-3 border bg-white text-slate-600">
                         <div class="grid grid-cols-3 gap-2 text-sm">
                             @foreach($category->subcategories as $subcategory)
-                            <a href="{{route('subcategories.show', $subcategory)}}" class="border text-center hover:bg-blue-200 hover:text-blue-800 transition-all duration-200 ease-in-out">{{$subcategory->name}}</a>
+                            <a href="{{route('subcategories.show', $subcategory)}}" class="border text-center hover:bg-slate-100 hover:text-blue-800 transition-all duration-200 ease-in-out">{{$subcategory->name}}</a>
                             @endforeach
                             <!-- add new subcategory button -->
-                            <a href="{{route('subcategories.add',$category)}}" class="flex w-full border justify-center items-center border-dashed border-slate-300 hover:bg-teal-600 hover:text-slate-50">
+                            <a href="{{route('subcategories.add',$category)}}" class="flex w-full border justify-center items-center border-dashed border-slate-300 hover:bg-slate-100 hover:text-blue-800">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                                 </svg>
