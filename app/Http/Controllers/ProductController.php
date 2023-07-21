@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Exception;
@@ -17,6 +18,8 @@ class ProductController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+        return view('admin.products.index', compact('categories'));
     }
 
     /**
@@ -27,6 +30,8 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $subcategories = Subcategory::all();
+        return view('admin.products.create',);
     }
 
     /**
@@ -42,11 +47,29 @@ class ProductController extends Controller
 
             'name' => 'required|unique:products',
             'unitprice' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'subcategory_id' => 'required',
         ]);
 
         try {
-            Product::create($request->all());
+            $product = Product::create($request->all());
+
+            if ($request->hasFile('image')) {
+                //save product image
+                $image_name = $product->id . '.' . $request->image->extension();
+                $request->file('image')->move(public_path('images/products/'), $image_name);
+
+                //if product has color
+                if ($request->has_color)
+                    $product->color = $request->color;
+                else
+                    $product->color = '';
+
+                //replace autosaved original url of uploaded image name by its formatted name
+                $product->image = $image_name;
+                $product->save();
+            }
+
             return redirect()->route('subcategories.show', $request->subcategory_id)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
@@ -88,6 +111,51 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $request->validate([
+
+            'name' => 'required|unique:products,name,' . $product->id, 'id',
+            'unitprice' => 'required|numeric',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+        ]);
+
+        try {
+            $image_name = '';
+
+            //if user has changed image, replace existing image 
+            if ($request->hasFile('image')) {
+                $existing_image_url = public_path('images/products/') . $product->image;
+
+                //remove existing image
+                if (file_exists($existing_image_url)) {
+                    unlink($existing_image_url);
+                }
+
+                //save uploaded image
+                $image_name = $product->id . '.' . $request->image->extension();
+                $request->file('image')->move(public_path('images/products/'), $image_name);
+            }
+
+            //update by raw input as it is
+            $product->update($request->all());
+
+            //if product has color
+            if ($request->has_color)
+                $product->color = $request->color;
+            else
+                $product->color = '';
+
+            //if image has been changed by user
+            //replace uploaded image name by its formatted name
+            if ($image_name != '')
+                $product->image = $image_name;
+
+            $product->save();
+
+            return redirect()->route('subcategories.show', $product->subcategory_id)->with('success', 'Successfully created');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
