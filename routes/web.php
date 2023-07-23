@@ -27,19 +27,12 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     if (Auth::check()) {
         if (Auth::user()->hasRole('admin'))
-            return redirect('admin');
-        // elseif(Auth::user()->hasRole('user'))
-        // return redirect('user.dashboard');
+            return view('admin.index');
     } else
         return view('index');
 });
 
-Route::get('admin', function () {
-    if (Auth::check()) {
-        return redirect('dashboard'); //admin dashboard
-    } else
-        return redirect('login');
-});
+
 Route::get('dashboard', [AuthController::class, 'index']);
 Route::view('login', 'login');
 Route::post('login', [AuthController::class, 'login']);
