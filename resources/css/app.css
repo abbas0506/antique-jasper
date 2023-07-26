@@ -28,7 +28,7 @@
 }
 @layer components {
     .container {
-        @apply px-2 md:px-24 min-w-full;
+        @apply px-4 md:px-24 min-w-full;
     }
     .input {
         @apply bg-transparent border border-gray-300  focus:border-slate-800 outline-none  text-base text-slate-800 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
