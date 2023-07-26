@@ -10,18 +10,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     @vite(['resources/js/app.js','resources/css/app.css'])
-    <!-- <link rel="stylesheet" href="{{asset('/build/assets/app.css')}}">
-    <script src="{{asset('/build/assets/app.js')}}"></script> -->
     <style>
         body {
             font-family: 'Poppins-Regular', sans-serif;
-            /* overflow-x: hidden; */
         }
     </style>
 </head>
 
 <body>
-    @yield('page')
+    @yield('header')
+    @yield('body')
+    @yield('footer')
     <script src="{{asset('js/sweetalert2@10.js')}}"></script>
     @yield('script')
 </body>

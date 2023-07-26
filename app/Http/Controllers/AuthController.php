@@ -37,7 +37,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('admin');
         } else {
-            return redirect()->back()->withErrors(['auth' => 'User credentials incorrect !']);
+            return redirect()->back()->withErrors(['auth' => 'Login information incorrect, please check CAPSLOCK!']);
         }
     }
 

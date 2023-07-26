@@ -1,5 +1,5 @@
 @extends('layouts.basic')
-@section('page')
+@section('body')
 
 <div class="w-1/5 h-screen fixed">
     <x-admin.sidebar></x-admin.sidebar>
@@ -9,8 +9,6 @@
     <div class="flex flex-col flex-1 min-h-full bg-slate-100">
         <x-admin.header></x-admin.header>
         @yield('page-content')
-
-
     </div>
 </div>
 

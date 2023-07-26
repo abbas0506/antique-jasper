@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply max-w-screen-2xl;
+    }
     thead th {
         @apply text-left text-sm;
     }
@@ -13,10 +16,22 @@
     label {
         @apply text-sm text-slate-500;
     }
+    h1 {
+        @apply text-3xl md:text-6xl font-bold;
+    }
+    h2 {
+        @apply text-2xl md:text-3xl font-bold;
+    }
+    p {
+        @apply text-slate-600 leading-relaxed;
+    }
 }
 @layer components {
+    .container {
+        @apply px-2 md:px-24 min-w-full;
+    }
     .input {
-        @apply bg-transparent border border-gray-300  focus:border-green-800 outline-none  text-base text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+        @apply bg-transparent border border-gray-300  focus:border-slate-800 outline-none  text-base text-slate-800 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }
     .search-box {
         @apply bg-transparent border-b border-gray-300 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;

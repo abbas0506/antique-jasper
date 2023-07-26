@@ -1,0 +1,9 @@
+@extends('layouts.basic')
+@section('header')
+<x-guest.header></x-guest.header>
+@endsection
+@section('body')
+@endsection
+@section('footer')
+<x-guest.footer></x-guest.footer>
+@endsection
