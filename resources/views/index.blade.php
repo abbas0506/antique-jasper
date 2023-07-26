@@ -3,13 +3,13 @@
 @section('body')
 <!-- hero section -->
 <section class="h-screen bg-orange-50 bg-cover bg-no-repeat">
-    <div class="container bg-slate-800 text-white">
-        <div class="flex justify-between items-center text-xs flex-wrap ">
-            <div>
-                <marquee behavior="" direction="">10% off to all customers on all products till 14 august. Free Delivery all over Pakistan</marquee>
+    <div class="container bg-slate-800 text-sm text-white">
+        <div class="grid grid-cols-1 md:grid-cols-2 justify-center">
+            <div class="">
+                <marquee behavior="" direction="">100% free delivery all over Pakistan</marquee>
             </div>
 
-            <div class="flex flex-wrap items-center space-x-2">
+            <div class="flex items-center justify-center md:justify-end space-x-2 w-full">
                 <a href="https://wa.me/00923044933477/?" target="_blank">
                     <i class="bi bi-whatsapp"></i>
                     +92 304 4933477
