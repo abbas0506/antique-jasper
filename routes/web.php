@@ -27,16 +27,22 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     if (Auth::check()) {
         if (Auth::user()->hasRole('admin'))
-            return view('admin.index');
+            return redirect('admin');
     } else
         return view('index');
 });
 
+Route::get('/{url}', function () {
+    if (Auth::guest())
+        return view('login');
+    else
+        return redirect('dashboard');
+})->where('url', "admin|login|signin");
 
 Route::get('dashboard', [AuthController::class, 'index']);
-Route::view('login', 'login');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('signout', [AuthController::class, 'signout']);
+
 Route::get('users.changepw', [AuthController::class, 'changepw'])->name('users.changepw');
 
 Route::group(['middleware' => ['role:admin']], function () {
