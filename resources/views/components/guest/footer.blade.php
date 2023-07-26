@@ -22,7 +22,7 @@
         <div class="fixed bottom-6 right-6">
             <div class="flex justify-center items-end">
                 <div class="text-sm text-slate-800">Need Help?</div>
-                <a href="https://wa.me/00923044933477/?" target="_blank">
+                <a href="https://wa.me/+923044933477" target="_blank">
                     <i class="bi bi-whatsapp text-green-600 text-3xl ml-2"></i>
                 </a>
             </div>

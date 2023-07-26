@@ -10,7 +10,7 @@
             </div>
 
             <div class="flex items-center justify-center md:justify-end space-x-2 w-full">
-                <a href="https://wa.me/00923044933477/?" target="_blank">
+                <a href="https://wa.me/+923044933477" target="_blank">
                     <i class="bi bi-whatsapp"></i>
                     +92 304 4933477
                 </a>
