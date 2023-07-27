@@ -3,6 +3,27 @@
 <section class="p-8">
     <h1 class="page-title">Products</h1>
     <p class="bread-crumb">Login > products</p>
+
+    <div class="container pt-32">
+        @foreach($categories as $category)
+        <div class="collapsible">
+            <div class="head">
+                <h3>
+                    {{$category->name}}
+                    <span class="text-xs ml-4 font-thin"></span>
+                </h3>
+                <i class="bi bi-chevron-compact-down text-lg"></i>
+            </div>
+            <div class="body">
+                @foreach($category->subcategories as $subcategory)
+                <a href="{{route('subcategories.show',$subcategory)}}" class="text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4 py-2">{{$subcategory->name}}</a>
+                @endforeach
+
+            </div>
+        </div>
+        @endforeach
+    </div>
+
     <div class="flex flex-col mb-4 mt-12">
         @foreach($categories as $category)
         <div class="flex text-xl tracking-wider text-red-700 border-b">{{$category->name}}</div>

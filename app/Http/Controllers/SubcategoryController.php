@@ -92,7 +92,7 @@ class SubcategoryController extends Controller
 
         try {
             $subcategory->update($request->all());
-            return redirect()->route('subcategories.show', $subcategory)->with('success', 'Successfully updated');;
+            return redirect('categories')->with('success', 'Successfully updated');;
         } catch (Exception $ex) {
             return redirect()->back()->withErrors($ex->getMessage());
         }

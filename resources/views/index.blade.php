@@ -45,7 +45,7 @@
             <h2>Our Featured Collection</h1>
                 <p class="text-xl mt-4 text-center">We have top featured collection of gold rings, stone, artificial jewellery both for men and women. </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 w-full mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 w-full mt-24">
             <!-- item  -->
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
@@ -54,8 +54,8 @@
                     </a>
                 </div>
                 <div class="absolute top-6 left-6">
-                    <h2 class="text-2xl font-bold">Women</h2>
-                    <h3 class="text-md text-slate-600">Spring 2023</h3>
+                    <h2 class="text-xl font-semibold">Women</h2>
+                    <h3 class="text-sm text-slate-600">Spring 2023</h3>
                 </div>
                 <img src="{{asset('images/woman.png')}}" alt="">
             </div>
@@ -66,8 +66,8 @@
                     </a>
                 </div>
                 <div class="absolute top-6 left-6">
-                    <h2 class="text-2xl font-bold">Men</h2>
-                    <h3 class="text-md text-slate-600">Spring 2023</h3>
+                    <h2 class="text-xl font-semibold">Men</h2>
+                    <h3 class="text-sm text-slate-600">Spring 2023</h3>
                 </div>
                 <img src="{{asset('images/man.png')}}" alt="">
             </div>
@@ -78,10 +78,10 @@
                     </a>
                 </div>
                 <div class="absolute top-6 left-6">
-                    <h2 class="text-2xl font-bold">Customized</h2>
-                    <h3 class="text-md text-slate-600">Spring 2023</h3>
+                    <h2 class="text-xl font-semibold">Custom</h2>
+                    <h3 class="text-sm text-slate-600">Spring 2023</h3>
                 </div>
-                <img src="{{asset('images/man.png')}}" alt="">
+                <img src="{{asset('images/bottle.png')}}" alt="">
             </div>
         </div>
     </div>
@@ -116,78 +116,29 @@
         </div>
         <!-- product listing -->
         <div class="mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 md:gap-x-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 md:gap-x-4">
+                @foreach($products as $product)
+                @php
+                $url=asset('images/products')."/".$product->image;
+                @endphp
                 <div class="product-card">
                     <div class="product">
-                        <img src="{{asset('images/products/1.png')}}" alt="">
-                        <div class="preview-btn">
+                        <img src="{{$url}}" alt="" class="w-full h-2/3">
+                        <!-- <div class="preview-btn">
                             <button>Quick View</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="add-to-cart">
                         <div>
-                            <a href="">Product Name </a>
-                            <p>Rs. 25</p>
+                            <a href="{{route('products.show',$product)}}">{{$product->name}} </a>
+                            <p>Rs. {{$product->unitprice}}</p>
                         </div>
                         <div>
                             <i class="bi bi-cart2"></i>
                         </div>
                     </div>
                 </div>
-
-                <div class="product-card">
-                    <div class="product">
-                        <img src="{{asset('images/products/1.png')}}" alt="">
-                        <div class="preview-btn">
-                            <button>Quick View</button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <div>
-                            <a href="">Product Name </a>
-                            <p>Rs. 25</p>
-                        </div>
-                        <div>
-                            <i class="bi bi-cart2"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product">
-                        <img src="{{asset('images/products/1.png')}}" alt="">
-                        <div class="preview-btn">
-                            <button>Quick View</button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <div>
-                            <a href="">Product Name </a>
-                            <p>Rs. 25</p>
-                        </div>
-                        <div>
-                            <i class="bi bi-cart2"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product">
-                        <img src="{{asset('images/products/1.png')}}" alt="">
-                        <div class="preview-btn">
-                            <button>Quick View</button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <div>
-                            <a href="">Product Name </a>
-                            <p>Rs. 25</p>
-                        </div>
-                        <div>
-                            <i class="bi bi-cart2"></i>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 

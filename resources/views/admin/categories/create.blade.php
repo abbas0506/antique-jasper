@@ -1,14 +1,15 @@
 @extends('layouts.admin')
 @section('page-content')
-<section class="m-8">
-    <h1 class="page-title">Site Configuration</h1>
+
+<div class="container pt-32">
+
+    <h3>Config</h3>
     <div class="bread-crumb">
-        <a href="{{route('config.index')}}"> Config </a> >
-        <a href="{{route('categories.index')}}">Categories </a> >
-        new
+        <a href="{{route('categories.index')}}" class="link"> Categories </a>
+        New
     </div>
 
-    <div class="container md:w-3/4 mx-auto px-5 mt-16">
+    <div class="mt-16">
 
         @if ($errors->any())
         <div class="alert-danger mt-8">
@@ -19,18 +20,21 @@
             </ul>
         </div>
         @endif
+
         <form action="{{route('categories.store')}}" method='post' class="flex flex-col w-full" onsubmit="return validate(event)">
             @csrf
 
-            <label for="" class='mt-8'>Category Name</label>
-            <input type="text" id='name' name='name' class="input" placeholder="Crockery">
+            <label for="">Category Name*</label>
+            <input type="text" id='name' name='name' class="input mt-2" placeholder="Crockery">
 
-            <div class="flex items-center justify-end mt-4 py-2">
-                <button type="submit" class="btn-indigo-rounded">Save</button>
+            <div class="mt-4">
+                <button type="submit" class="btn-indigo-rounded">Save Category</button>
             </div>
         </form>
     </div>
-</section>
+
+</div>
+
 @endsection
 @section('script')
 <script>

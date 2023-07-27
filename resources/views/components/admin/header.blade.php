@@ -1,27 +1,25 @@
-<div class="flex w-full px-8 py-4 justify-between bg-gradient-to-b from-teal-700 to-teal-500">
-    <div class="flex flex-1 text-slate-50">
-        Admin
-    </div>
-    <div class="flex space-x-3 text-slate-50">
-        <!-- bell icon  -->
-        <a href='' class="relative hover:text-slate-300">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-            <div class="absolute flex justify-center items-center h-3 w-3 -top-1 right-1 rounded-full">
-                <!-- <div class="animate-ping w-2 h-2 rounded-full absolute top-0 right-1 bg-orange-400"></div> -->
+<header class="header admin">
+    <div class="container">
+        <div class="flex flex-wrap h-16 items-center justify-between w-full">
 
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-400"></span>
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-gear" viewBox="0 0 16 16">
+                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+            </svg>
+
+            <div class="flex items-center space-x-3">
+                <a href='' class="relative">
+                    <i class="bi bi-bell"></i>
+                    <div class="absolute flex justify-center items-center h-3 w-3 top-0 right-0 rounded-full">
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-400"></span>
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    </div>
+                </a>
+                <div class='hover:cursor-pointer' onclick="toggleSidebar()">
+                    <i class="bi bi-list text-[32px]"></i>
+                </div>
 
             </div>
-
-        </a>
-        <a href="{{url('signout')}}" class="hover:text-slate-300">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-            </svg>
-        </a>
+        </div>
     </div>
 
-</div>
+</header>

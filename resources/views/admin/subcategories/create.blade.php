@@ -1,37 +1,38 @@
 @extends('layouts.admin')
 @section('page-content')
-<section class="m-8">
-    <h1 class="page-title">Site Configuration</h1>
+
+<div class="container pt-32">
+
+    <h3>Config</h3>
     <div class="bread-crumb">
-        <a href="{{route('config.index')}}"> Config </a> >
-        <a href="{{route('categories.index')}}">Categories </a> >
-        {{$category->name}} > new subcategory
+        <a href="{{route('categories.index')}}">Categories </a>
+        New Sub-category
     </div>
 
-    <div class="container md:w-3/4 mx-auto px-5 mt-16">
+    @if ($errors->any())
+    <div class="alert-danger mt-8">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-        @if ($errors->any())
-        <div class="alert-danger mt-8">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        <h1 class="font-bold text-red-600 mt-8">Category: <span class="font-thin text-slate-600">{{$category->name}}</span></h1>
-        <form action="{{route('subcategories.store')}}" method='post' class="flex flex-col w-full" onsubmit="return validate(event)">
+    <div class="mt-16">
+        <h3>{{$category->name}}</h3>
+        <form action="{{route('subcategories.store')}}" method='post' class="flex flex-col w-full mt-8" onsubmit="return validate(event)">
             @csrf
             <input type="hidden" name="category_id" value="{{$category->id}}">
-            <label for="" class='mt-8'>Sub Category Name</label>
-            <input type="text" id='name' name='name' class="input" placeholder="Spoon">
+            <label for="">Sub Category Name</label>
+            <input type="text" id='name' name='name' class="input mt-2" placeholder="Spoon">
 
-            <div class="flex items-center justify-end mt-4 py-2">
-                <button type="submit" class="btn-indigo-rounded">Save</button>
+            <div class="mt-4">
+                <button type="submit" class="btn-indigo-rounded">Add New Sub-Category</button>
             </div>
         </form>
     </div>
+</div>
 </section>
 @endsection
 @section('script')

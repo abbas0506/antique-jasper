@@ -1,82 +1,69 @@
 @extends('layouts.admin')
 @section('page-content')
-<section class="m-8">
-    <h1 class="page-title">Site Configuration</h1>
+<div class="container pt-32">
+    <h3>Config</h3>
     <div class="bread-crumb">
-        <a href="{{route('config.index')}}"> Config </a> >
-        <a href="{{route('categories.index')}}">Categories </a> >
-        {{$product->subcategory->category->name}} >
-        <a href="{{route('subcategories.show',$product->subcategory)}}">Sub Category : {{$product->subcategory->name}} </a> >
-        {{$product->name}} > edit
+        <a href="{{route('categories.index')}}">Categories </a>
+        <a href="{{route('subcategories.show',$product->subcategory)}}">{{$product->subcategory->name}} </a>
+        {{$product->name}} :: edit
     </div>
 
-    <div class="container md:w-3/4 mx-auto px-5 mt-16">
+    @if ($errors->any())
+    <div class="alert-danger mt-8">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-        @if ($errors->any())
-        <div class="alert-danger mt-8">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+    <h3 class="mt-16"><span class="chevron-right"> {{$product->subcategory->category->name}} </span><span class="chevron-right"> {{$product->subcategory->name}} </span> {{$product->name}}</h3>
+    <form action="{{route('products.update', $product)}}" method='post' class="flex flex-col w-full mt-8" enctype="multipart/form-data" onsubmit="return validate(event)">
+        @csrf
+        @method('PATCH')
+        <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+            <div class="flex flex-col flex-1">
 
-        <h1 class="font-bold text-red-600 mt-8"> Category : <span class="text-sm font-thin text-slate-600">[ {{$product->subcategory->category->name}} > {{$product->subcategory->name}} ]</span></h1>
-        <form action="{{route('products.update', $product)}}" method='post' class="flex flex-col w-full" enctype="multipart/form-data" onsubmit="return validate(event)">
-            @csrf
-            @method('PATCH')
-            <div class="flex w-full space-x-8 mt-8">
-                <div class="flex flex-col flex-1">
+                <label for="" class=''>Product Name</label>
+                <input type="text" id='name' name='name' class="input" placeholder="Tea Cup" value="{{$product->name}}">
 
-                    <label for="" class=''>Product Name</label>
-                    <input type="text" id='name' name='name' class="input" placeholder="Tea Cup" value="{{$product->name}}">
+                <label for="" class='mt-3'>Unit Price</label>
+                <input type="number" id='unitprice' name='unitprice' class="input" placeholder="price" value="{{$product->unitprice}}">
 
-                    <label for="" class='mt-3'>Unit Price</label>
-                    <input type="number" id='unitprice' name='unitprice' class="input" placeholder="price" value="{{$product->unitprice}}">
-
-                    <div class="flex items-center space-x-8 mt-3">
-                        <div class="flex items-center space-x-2">
-                            <input type="checkbox" class="w-4 h-4" id='chk_color' name="has_color" onchange="toggleColor()" @if($product->color!='') checked @endif>
-                            <label for="">Has Color</label>
-                        </div>
-
-                        <!-- hide color if null -->
-                        @if($product->color=='')
-                        <input type="color" id='color' name='color' class="input hidden" placeholder="color" value="{{$product->color}}">
-                        @else
-                        <input type="color" id='color' name='color' class="input" placeholder="color" value="{{$product->color}}">
-                        @endif
-
+                <div class="flex items-center space-x-8 mt-3">
+                    <div class="flex items-center space-x-2">
+                        <input type="checkbox" class="w-4 h-4" id='chk_color' name="has_color" onchange="toggleColor()" @if($product->color!='') checked @endif>
+                        <label for="">Has Color</label>
                     </div>
 
-                    <label for="" class="mt-3">Image</label>
-                    <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()'>
-
-                </div>
-                <div class="flex justify-center items-center">
-                    @if($product->image=='')
-                    <img src="{{asset('images/no-image.png')}}" alt="" id='preview_img' class="w-60">
+                    <!-- hide color if null -->
+                    @if($product->color=='')
+                    <input type="color" id='color' name='color' class="input hidden" placeholder="color" value="{{$product->color}}">
                     @else
-                    @php
-                    $url=asset('images/products')."/". $product->image;
-                    @endphp
-                    <img src="{{$url}}" alt="" id='preview_img' class="w-60">
+                    <input type="color" id='color' name='color' class="input" placeholder="color" value="{{$product->color}}">
                     @endif
 
                 </div>
+
+                <label for="" class="mt-3">Image</label>
+                <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()'>
+
             </div>
-            <div class="flex items-center justify-end mt-4 py-2">
-                <button type="submit" class="btn-indigo-rounded">Save</button>
+            <div class="flex flex-col justify-center items-center">
+                @if($product->image=='')
+                <img src="{{asset('images/no-image.png')}}" alt="" id='preview_img' class="w-60 h-60">
+                @else
+                @php
+                $url=asset('images/products')."/". $product->image;
+                @endphp
+                <img src="{{$url}}" alt="" id='preview_img' class="w-60 h-60">
+                @endif
+                <button type="submit" class="btn-indigo-rounded w-60 py-2 mt-4">Update Product</button>
             </div>
-
-        </form>
-
-
-
-
-    </div>
-</section>
+        </div>
+    </form>
+</div>
 @endsection
 @section('script')
 <script>

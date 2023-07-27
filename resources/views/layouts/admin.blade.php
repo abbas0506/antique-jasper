@@ -1,16 +1,27 @@
 @extends('layouts.basic')
 @section('body')
 
-<div class="w-1/5 h-screen fixed">
-    <x-admin.sidebar></x-admin.sidebar>
-</div>
-<div class="flex w-screen min-h-screen">
-    <div class="w-1/5"></div>
-    <div class="flex flex-col flex-1 min-h-full bg-slate-100">
-        <x-admin.header></x-admin.header>
-        @yield('page-content')
-    </div>
-</div>
+@section('header')
+<x-admin.header></x-admin.header>
+@endsection
 
+@section('sidebar')
+<x-admin.sidebar></x-admin.sidebar>
+@endsection
 
+@yield('page-content')
+
+@endsection
+
+@section('script')
+<script>
+    $(window).scroll(function() { // this will work when your window scrolled.
+        var height = $(window).scrollTop(); //getting the scrolling height of window
+        if (height > 10) {
+            $('header').addClass('scrolled');
+        } else {
+            $('header').removeClass('scrolled');
+        }
+    });
+</script>
 @endsection

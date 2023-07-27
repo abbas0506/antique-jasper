@@ -9,6 +9,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SubcategoryController;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +30,10 @@ Route::get('/', function () {
     if (Auth::check()) {
         if (Auth::user()->hasRole('admin'))
             return redirect('admin');
-    } else
-        return view('index');
+    } else {
+        $products = Product::all();
+        return view('index', compact('products'));
+    }
 });
 
 Route::get('/{url}', function () {

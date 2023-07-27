@@ -1,4 +1,6 @@
 @extends('layouts.guest')
+@section('header')
+@endsection
 @section('body')
 <div class="container flex flex-col justify-center items-center bg-gradient-to-b max-w-screen h-screen from-slate-50 to-slate-400">
     <div class="flex flex-col justify-center items-center md:w-1/3">
@@ -32,5 +34,7 @@
         </form>
     </div>
 </div>
+@endsection
 
+@section('footer')
 @endsection
