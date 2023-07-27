@@ -1,4 +1,4 @@
-<aside aria-label="Sidebar" id='sidebar'>
+<aside aria-label="Sidebar" id='sidebar' class="sidebar">
     <div class="flex justify-center pt-8 bg-red-50">
         <img src="{{asset('/images/logo.png')}}" alt="" class="w-24">
     </div>

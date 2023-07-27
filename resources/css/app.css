@@ -28,7 +28,7 @@
     p {
         @apply text-slate-600 leading-relaxed;
     }
-    aside {
+    /* aside {
         @apply fixed top-0 -left-60 w-60 z-50 md:inline-block h-full bg-white shadow-xl text-slate-700 transition-all duration-1000 ease-in-out;
     }
     aside.mobile {
@@ -37,9 +37,19 @@
 
     aside a:hover {
         @apply text-teal-700;
-    }
+    } */
 }
 @layer components {
+    .sidebar {
+        @apply fixed top-0 -left-60 w-60 z-50 md:inline-block h-full bg-white shadow-xl text-slate-700 transition-all duration-1000 ease-in-out;
+    }
+    .sidebar.mobile {
+        @apply translate-x-60;
+    }
+
+    .sidebar a:hover {
+        @apply text-teal-700;
+    }
     .container {
         @apply px-4 md:px-24 min-w-full;
     }
