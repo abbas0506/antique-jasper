@@ -31,9 +31,9 @@
     aside {
         @apply fixed top-0 -left-60 w-60 z-50 md:inline-block h-full bg-white shadow-xl text-slate-700 transition-all duration-1000 ease-in-out;
     }
-    aside.mobile {
+    /* aside.mobile {
         @apply translate-x-60;
-    }
+    } */
 
     aside a:hover {
         @apply text-teal-700;
@@ -48,6 +48,9 @@
     }
     .search-box {
         @apply bg-transparent border-b border-gray-300 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    }
+    #sidebar.mobile {
+        @apply translate-x-60;
     }
     .page-title {
         @apply flex flex-col justify-center items-center;
