@@ -3,7 +3,6 @@
 <section class="m-8">
     <h1 class="page-title">Site Configuration</h1>
     <div class="bread-crumb">
-        <a href="{{route('config.index')}}"> Config </a> >
         <a href="{{route('countries.index')}}">Countries </a> >
         {{$country->name}} > edit
     </div>
