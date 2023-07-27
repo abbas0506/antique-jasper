@@ -8,13 +8,13 @@
                 <a href="{{url('/')}}">Home</a>
             </li>
             <li>
-                <a href="{{url('policy')}}">Policy</a>
+                <a href="#">Policy</a>
             </li>
             <li>
-                <a href="{{url('about')}}">About</a>
+                <a href="#">About</a>
             </li>
             <li>
-                <a href="{{url('contact')}}">Contact</a>
+                <a href="#">Contact</a>
             </li>
 
         </ul>

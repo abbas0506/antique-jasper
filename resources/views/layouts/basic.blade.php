@@ -24,6 +24,7 @@
     @yield('footer')
     <script src="{{asset('js/sweetalert2@10.js')}}"></script>
     <script src="{{asset('js/collapsible.js')}}"></script>
+    <script src="{{asset('js/responsive.js')}}"></script>
     @yield('script')
 </body>
 

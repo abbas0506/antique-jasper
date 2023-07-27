@@ -3,7 +3,7 @@
         <img src="{{asset('/images/logo.png')}}" alt="" class="w-24">
     </div>
     <div class="mt-12 px-5">
-        <ul class="flex flex-col space-y-2">
+        <ul class="flex flex-col space-y-4">
             <li>
                 <a href="{{url('dashboard')}}">
                     <i class="bi bi-grid-1x2"></i>
