@@ -28,9 +28,11 @@
                     <span class="flex justify-center item text-xs absolute -top-2 -right-1 w-4 h-4 rounded-full bg-red-200">{{ count((array) session('cart')) }}</span>
                 </a>
 
-
                 <i class="bi bi-heart"></i>
-                <i class="bi bi-list md:hidden"></i>
+
+                <div class='hover:cursor-pointer md:hidden' onclick="toggleSidebar()">
+                    <i class="bi bi-list text-[32px]"></i>
+                </div>
             </div>
         </div>
 
