@@ -43,7 +43,7 @@
                     <img src="{{$url}}" alt="" id='' class="w-full h-2/3">
                     <div class="flex flex-col justify-center items-center text-center">
                         <div class="text-xs text-slate-800">{{$product->name}}</div>
-                        <div class="text-xs text-slate-500">Price: Rs. {{$product->unitprice}}/-</div>
+                        <div class="text-xs text-slate-500">Price: Rs. {{$product->price}}/-</div>
                     </div>
 
                 </div>

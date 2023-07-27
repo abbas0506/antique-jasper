@@ -37,7 +37,7 @@
             <div>{{$product->name}}</div>
 
             <label for="" class='mt-3'>Unit Price</label>
-            <div>{{$product->unitprice}}</div>
+            <div>{{$product->price}}</div>
 
             <label for="" class='mt-3'>Color</label>
             @if($product->color=='')

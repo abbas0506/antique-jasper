@@ -223,4 +223,8 @@
     .product-card .add-to-cart p {
         @apply text-slate-600 text-sm;
     }
+
+    .add2cart {
+        @apply flex justify-center items-center w-12 h-12 rounded-full border border-slate-200 hover:bg-slate-200;
+    }
 }

@@ -46,7 +46,7 @@ class ProductController extends Controller
         $request->validate([
 
             'name' => 'required|unique:products',
-            'unitprice' => 'required|numeric',
+            'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'subcategory_id' => 'required',
         ]);
@@ -114,7 +114,7 @@ class ProductController extends Controller
         $request->validate([
 
             'name' => 'required|unique:products,name,' . $product->id, 'id',
-            'unitprice' => 'required|numeric',
+            'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 

@@ -29,7 +29,7 @@
                 <input type="text" id='name' name='name' class="input" placeholder="Tea Cup" value="{{$product->name}}">
 
                 <label for="" class='mt-3'>Unit Price</label>
-                <input type="number" id='unitprice' name='unitprice' class="input" placeholder="price" value="{{$product->unitprice}}">
+                <input type="number" id='price' name='price' class="input" placeholder="price" value="{{$product->price}}">
 
                 <div class="flex items-center space-x-8 mt-3">
                     <div class="flex items-center space-x-2">

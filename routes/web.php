@@ -9,9 +9,9 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SubcategoryController;
-use App\Models\Category;
+use App\Http\Controllers\web\ArticleController;
+use App\Http\Controllers\web\CartController;
 use App\Models\Product;
-use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,3 +67,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
+// 
+Route::resource('articles', ArticleController::class);
+Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
