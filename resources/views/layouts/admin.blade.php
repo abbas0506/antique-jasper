@@ -23,5 +23,9 @@
             $('header').removeClass('scrolled');
         }
     });
+
+    function toggleSidebar() {
+        $("#sidebar").toggleClass("mobile");
+    }
 </script>
 @endsection

@@ -1,63 +1,44 @@
 @extends('layouts.guest')
 
 @section('body')
-<section class="h-screen bg-orange-50 bg-cover bg-no-repeat">
+<section class="h-screen">
     <x-guest.marquee></x-guest.marquee>
     <div class="container pt-32 h-full">
         <h3>Cart Detail</h3>
-        <div class="mt-16">
+        <div class="mt-16 w-full">
+            <div class="flex items-center text-sm font-semibold">
+                <div class="w-24 hidden md:flex">Image</div>
+                <div class="flex-1">Product</div>
+                <div class="w-12 md:w-24 text-center">Price</div>
+                <div class="w-12 md:w-24 text-center">Qty</div>
+                <div class="w-12 md:w-24 text-center">Subtotal</div>
+            </div>
 
-            <table id="cart" class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width:50%">Product</th>
-                        <th style="width:10%">Price</th>
-                        <th style="width:8%">Qty</th>
-                        <th style="width:22%" class="text-center">Subtotal</th>
-                        <th style="width:10%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $total = 0 ?>
-                    @if(session('cart'))
-                    @foreach(session('cart') as $id => $details)
-                    <?php
-                    $total += $details['price'] * $details['qty'];
-                    $url = asset('images/products') . "/" . $details['image'];
-                    ?>
-                    <tr>
-                        <td data-th="Product">
-                            <div class="row">
-                                <div class="col-sm-3 hidden-xs"><img src="{{$url}}" width="100" height="100" class="img-responsive" /></div>
-                                <div class="col-sm-9">
-                                    <h4 class="nomargin">{{ $details['name'] }}</h4>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-th="Price">${{ $details['price'] }}</td>
-                        <td data-th="qty">
-                            <input type="number" value="{{ $details['qty'] }}" class="form-control qty" />
-                        </td>
-                        <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['qty'] }}</td>
-                        <td class="actions" data-th="">
-                            <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                            <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
-                <tfoot>
-                    <tr class="visible-xs">
-                        <td class="text-center"><strong>Total {{ $total }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td><a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                        <td colspan="2" class="hidden-xs"></td>
-                        <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
+            @php $total = 0; @endphp
+            @if(session('cart'))
+            @foreach(session('cart') as $id => $details)
+
+            @php
+            $total += $details['price'] * $details['qty'];
+            $url = asset('images/products') . "/" . $details['image'];
+            @endphp
+
+            <div class="flex items-center text-sm space-y-2">
+                <div class="w-24 hidden md:flex"><img src="{{$url}}" class="w-16"></div>
+                <div class="flex-1">{{$details['name']}}</div>
+                <div class="w-12 md:w-24 text-center">{{ $details['price'] }}</div>
+                <div class="w-12 md:w-24 text-center"><input type="number" value="{{ $details['qty'] }}" class="w-3/4 text-center"></div>
+                <div class="w-12 md:w-24 text-center">{{$details['price'] * $details['qty']}}</div>
+            </div>
+            @endforeach
+            <!-- cart footer -->
+            <div class="flex flex-1 mt-2 py-2 border-t text-sm font-semibold justify-end">Total: Rs. {{ $total }}</div>
+            @endif
+
+            <div class="flex flex-wrap justify-center items-center md:space-x-4 mt-4">
+                <a href="{{url('/')}}" class="btn-orange">Continue Shopping <span class="chevron-right pl-2"></span></a>
+                <a href="{{url('/')}}" class="btn-teal"> <i class="bi bi-check pr-2"></i>Check Out</a>
+            </div>
         </div>
     </div>
 </section>

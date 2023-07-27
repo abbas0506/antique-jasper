@@ -46,7 +46,7 @@ class CartController extends Controller
             "name" => $product->name,
             "qty" => 1,
             "price" => $product->price,
-            "photo" => $product->photo
+            'image' => $product->image,
         ];
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
