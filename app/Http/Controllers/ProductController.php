@@ -56,7 +56,7 @@ class ProductController extends Controller
 
             if ($request->hasFile('image')) {
                 //save product image
-                $image_name = $product->id . '.' . $request->image->extension();
+                $image_name = $product->code . '.' . $request->image->extension();
 
                 $image_url = public_path('images/products/') . $image_name;
 
@@ -137,7 +137,7 @@ class ProductController extends Controller
                 }
 
                 //save uploaded image
-                $image_name = $product->id . '.' . $request->image->extension();
+                $image_name = $product->code . '.' . $request->image->extension();
                 $request->file('image')->move(public_path('images/products/'), $image_name);
             }
 
