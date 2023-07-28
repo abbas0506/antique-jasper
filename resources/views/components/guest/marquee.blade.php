@@ -1,7 +1,7 @@
 <div class="container bg-slate-800 text-sm text-white">
     <div class="grid grid-cols-1 md:grid-cols-2 justify-center">
         <div class="">
-            <marquee behavior="" direction="">100% free delivery all over Pakistan</marquee>
+            <marquee behavior="" direction="">Enjoy free shipping on two or more items' order</marquee>
         </div>
 
         <div class="flex items-center justify-center md:justify-end space-x-2 w-full">
