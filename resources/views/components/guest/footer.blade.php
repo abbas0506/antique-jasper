@@ -5,9 +5,8 @@
 
             <nav class="flex justify-center items-center space">
                 <ul class="flex flex-wrap space-x-4 mt-4 text-xs">
-                    <li>Delivery</li>
-                    <li>Return</li>
-                    <li>FAQ</li>
+                    <li>Home</li>
+                    <li>Policy</li>
                     <li>About</li>
                     <li>Contact</li>
                 </ul>
