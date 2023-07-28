@@ -10,6 +10,9 @@
             <label for="" class=''>Product Name</label>
             <div>{{$product->name}}</div>
 
+            <label for="" class='mt-3'>Product Code</label>
+            <div>{{$product->code}}</div>
+
             <label for="" class='mt-3'>Unit Price</label>
             <div>{{$product->price}}</div>
 

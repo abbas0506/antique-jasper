@@ -28,8 +28,17 @@
                 <label for="" class=''>Product Name</label>
                 <input type="text" id='name' name='name' class="input" placeholder="Tea Cup" value="{{$product->name}}">
 
-                <label for="" class='mt-3'>Unit Price</label>
-                <input type="number" id='price' name='price' class="input" placeholder="price" value="{{$product->price}}">
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-2 mt-2 items-center">
+                    <div>
+                        <label for="" class=''>Product Code</label>
+                        <input type="text" id='code' name='code' class="input w-full" value="{{$product->code}}" placeholder="R001">
+                    </div>
+                    <div>
+                        <label for="" class=''>Unit Price</label>
+                        <input type="number" id='price' name='price' class="input w-full" value="{{$product->price}}" placeholder="price">
+
+                    </div>
+                </div>
 
                 <label for="" class='mt-3'>Color (if any)</label>
                 <div class="flex flex-wrap items-center space-x-4 mt-3">

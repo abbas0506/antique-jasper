@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-32">
+<div class="container pt-24">
     <h3>Config</h3>
     <div class="bread-crumb">
         <a href="{{route('categories.index')}}">Categories </a>
@@ -17,18 +17,29 @@
     </div>
     @endif
 
-    <h3 class="mt-16"><span class="chevron-right"> {{$subcategory->category->name}} </span> <span class="chevron-right"> {{$subcategory->name}} </span> New </h3>
+    <h3 class="mt-8"><span class="chevron-right"> {{$subcategory->category->name}} </span> <span class="chevron-right"> {{$subcategory->name}} </span> New </h3>
     <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full mt-4" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 items-center">
 
             <div class="flex flex-col flex-1">
                 <input type="hidden" name="subcategory_id" value="{{$subcategory->id}}">
-                <label for="" class=''>Product Name</label>
-                <input type="text" id='name' name='name' class="input" placeholder="Tea Cup">
 
-                <label for="" class='mt-3'>Unit Price</label>
-                <input type="number" id='price' name='price' class="input" placeholder="price">
+                <label for="" class='mt-3'>Product Name</label>
+                <input type="text" id='name' name='name' class="input" placeholder="Product Name">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-2 mt-2 items-center">
+                    <div>
+                        <label for="" class=''>Product Code</label>
+                        <input type="text" id='code' name='code' class="input w-full" placeholder="R001">
+                    </div>
+                    <div>
+                        <label for="" class=''>Unit Price</label>
+                        <input type="number" id='price' name='price' class="input w-full" placeholder="price">
+
+                    </div>
+                </div>
+
 
                 <label for="" class='mt-3'>Color (if any)</label>
                 <div class="flex flex-wrap items-center space-x-4 mt-3">

@@ -44,8 +44,8 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-
-            'name' => 'required|unique:products',
+            'code' => 'required|unique:products',
+            'name' => 'required',
             'price' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
             'subcategory_id' => 'required',
@@ -106,7 +106,8 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required|unique:products,name,' . $product->id, 'id',
+            'code' => 'required|unique:products,code,' . $product->id, 'id',
+            'name' => 'required',
             'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);

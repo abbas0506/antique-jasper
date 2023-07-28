@@ -44,9 +44,10 @@
             @php
             $url=asset('images/products')."/". $product->image;
             @endphp
-            <img src="{{$url}}" alt="" id='preview_img' class="w-8 h-8 rounded-md">
+            <img src="{{$url}}" alt="" id='preview_img' class="w-12 h-12 rounded-md">
             @endif
-            <a href="{{route('products.show', $product)}}" class="flex flex-1 link items-center ml-4">{{$product->name}}</a>
+            <a href="{{route('products.show', $product)}}" class="w-24 ml-4 link">AJ#{{$product->code}}</a>
+            <div class="flex flex-1 ml-4">{{$product->name}}</div>
             <!-- crud operation -->
             <div class="w-24">{{$product->price}}</div>
             <div class="flex justify-center items-center space-x-4">
