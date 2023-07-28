@@ -114,11 +114,14 @@
                     <div class="add-to-cart">
                         <div>
                             <a href="{{route('articles.show',$product)}}">{{$product->name}} </a>
-                            <p>Rs. {{$product->price}}</p>
+                            <p>AJ#{{$product->code}}, &nbsp Rs. {{$product->price}}</p>
                         </div>
-                        <a href="{{route('cart.add', $product->id)}}" class="add2cart">
-                            <i class="bi bi-cart2"></i>
-                        </a>
+                        <div class="flex items-center">
+                            <a href="{{route('cart.add', $product->id)}}" class="add2cart">
+                                <i class="bi bi-cart2"></i>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 @endforeach
