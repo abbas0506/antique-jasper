@@ -1,6 +1,7 @@
-@extends('layouts.admin')
-@section('page-content')
-<div class="container pt-32">
+@extends('layouts.guest')
+@section('body')
+<x-guest.marquee></x-guest.marquee>
+<div class="container pt-32 min-h-[98vh]">
     <h3>Config</h3>
     <div class="bread-crumb">
         <a href="{{route('categories.index')}}">Categories </a>

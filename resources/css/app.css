@@ -240,4 +240,20 @@
     .add2cart {
         @apply flex justify-center items-center w-12 h-12 rounded-full border border-slate-200 hover:bg-slate-200;
     }
+
+    .color span {
+        @apply flex justify-center items-center w-6 h-6 rounded-full transition-all duration-500 ease-in-out;
+    }
+
+    .color input[type="checkbox"]:checked + label span {
+        @apply ring-2 ring-black ring-offset-2;
+    }
+
+    .gender span {
+        @apply flex justify-center items-center w-6 h-6 text-black rounded-full transition-all duration-500 ease-in-out;
+    }
+
+    .gender input[type="checkbox"]:checked + label span {
+        @apply ring-2 ring-black ring-offset-2;
+    }
 }

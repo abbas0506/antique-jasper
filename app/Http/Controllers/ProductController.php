@@ -59,12 +59,6 @@ class ProductController extends Controller
                 $image_name = $product->id . '.' . $request->image->extension();
                 $request->file('image')->move(public_path('images/products/'), $image_name);
 
-                //if product has color
-                if ($request->has_color)
-                    $product->color = $request->color;
-                else
-                    $product->color = '';
-
                 //replace autosaved original url of uploaded image name by its formatted name
                 $product->image = $image_name;
                 $product->save();
@@ -112,12 +106,13 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-
             'name' => 'required|unique:products,name,' . $product->id, 'id',
             'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
+        if (!$request->color) $request->merge(['color' => null]);
+        if (!$request->gender) $request->merge(['gender' => '']);
         try {
             $image_name = '';
 
@@ -137,12 +132,6 @@ class ProductController extends Controller
 
             //update by raw input as it is
             $product->update($request->all());
-
-            //if product has color
-            if ($request->has_color)
-                $product->color = $request->color;
-            else
-                $product->color = '';
 
             //if image has been changed by user
             //replace uploaded image name by its formatted name

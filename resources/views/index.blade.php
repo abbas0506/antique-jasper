@@ -113,7 +113,7 @@
                     </div>
                     <div class="add-to-cart">
                         <div>
-                            <a href="{{route('products.show',$product)}}">{{$product->name}} </a>
+                            <a href="{{route('articles.show',$product)}}">{{$product->name}} </a>
                             <p>Rs. {{$product->price}}</p>
                         </div>
                         <a href="{{route('cart.add', $product->id)}}" class="add2cart">

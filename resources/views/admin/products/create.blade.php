@@ -17,10 +17,9 @@
     </div>
     @endif
 
-    <h3 class="mt-16">New Product</h3>
-    <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full" enctype="multipart/form-data" onsubmit="return validate(event)">
+    <h3 class="mt-16"><span class="chevron-right"> {{$subcategory->category->name}} </span> <span class="chevron-right"> {{$subcategory->name}} </span> New </h3>
+    <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full mt-4" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
-
         <div class="grid grid-cols-1 md:grid-cols-2 items-center">
 
             <div class="flex flex-col flex-1">
@@ -31,17 +30,70 @@
                 <label for="" class='mt-3'>Unit Price</label>
                 <input type="number" id='price' name='price' class="input" placeholder="price">
 
-                <div class="flex items-center space-x-8 mt-3">
-                    <div class="flex items-center space-x-2">
-                        <input type="checkbox" class="w-4 h-4" id='chk_color' name="has_color" onchange="toggleColor()">
-                        <label for="">Has Color</label>
+                <label for="" class='mt-3'>Color (if any)</label>
+                <div class="flex flex-wrap items-center space-x-4 mt-3">
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='black' name='color' value="1" class="chk hidden">
+                        <label for="black">
+                            <span class="bg-black"></span>
+                        </label>
                     </div>
-
-                    <input type="color" id='color' name='color' class="input hidden" placeholder="color">
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='blue' name='color' value="2" class="w-4 h-4 chk hidden">
+                        <label for="blue">
+                            <span class="bg-blue-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='gray' name='color' value="3" class="w-4 h-4 chk hidden">
+                        <label for="gray">
+                            <span class="bg-gray-400"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='white' name='color' value="4" class="w-4 h-4 chk hidden">
+                        <label for="white">
+                            <span class="border border-slate-800 bg-white"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='green' name='color' value="5" class="w-4 h-4 chk hidden">
+                        <label for="green">
+                            <span class="bg-green-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='red' name='color' value="6" class="w-4 h-4 chk hidden">
+                        <label for="red">
+                            <span class="bg-red-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='yellow' name='color' value="7" class="w-4 h-4 chk hidden">
+                        <label for="yellow">
+                            <span class="bg-orange-300"></span>
+                        </label>
+                    </div>
 
                 </div>
 
-                <label for="" class="mt-3">Image</label>
+                <label for="" class='mt-4'>Specific to</label>
+                <div class="flex items-center space-x-4 mt-4">
+                    <div class="flex space-x-2 items-center gender">
+                        <input type="checkbox" id='M' name="gender" value="M" class="chk hidden">
+                        <label for="M">
+                            <span class="bg-blue-200">M</span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center gender">
+                        <input type="checkbox" id='F' name="gender" value="F" class="chk hidden">
+                        <label for="F">
+                            <span class="bg-orange-200">F</span>
+                        </label>
+                    </div>
+                </div>
+
+                <label for="" class="mt-6">Image</label>
                 <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()' required>
 
             </div>
@@ -71,10 +123,10 @@
     }
 
     function toggleColor() {
-        if ($('#chk_color').prop('checked'))
-            $('#color').show();
+        if ($('#has_color').prop('checked'))
+            $('#color-bar').show();
         else
-            $('#color').hide();
+            $('#color-bar').hide();
     }
 
     function preview_pic() {
@@ -83,5 +135,15 @@
             preview_img.src = URL.createObjectURL(file)
         }
     }
+
+    // check only single color
+    $(document).on('click', '.color .chk', function() {
+        $('.color .chk').not(this).prop('checked', false);
+    });
+
+    // check only single gender
+    $(document).on('click', '.gender .chk', function() {
+        $('.gender .chk').not(this).prop('checked', false);
+    });
 </script>
 @endsection

@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name', 50)->unique();
             $table->unsignedInteger('price');
-            $table->unsignedInteger('product_type')->default(0);
-            $table->string('color')->nullable();
+            $table->unsignedInteger('color')->nullable();
+            $table->string('gender', 1)->nullable();
             $table->string('image');
+            $table->unsignedInteger('rating')->default(0);
+
             $table->unsignedBigInteger('subcategory_id');
 
             $table->foreign('subcategory_id')

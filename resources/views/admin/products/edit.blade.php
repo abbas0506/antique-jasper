@@ -31,22 +31,84 @@
                 <label for="" class='mt-3'>Unit Price</label>
                 <input type="number" id='price' name='price' class="input" placeholder="price" value="{{$product->price}}">
 
-                <div class="flex items-center space-x-8 mt-3">
-                    <div class="flex items-center space-x-2">
-                        <input type="checkbox" class="w-4 h-4" id='chk_color' name="has_color" onchange="toggleColor()" @if($product->color!='') checked @endif>
-                        <label for="">Has Color</label>
+                <label for="" class='mt-3'>Color (if any)</label>
+                <div class="flex flex-wrap items-center space-x-4 mt-3">
+                    <!-- <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='nocolor' name='color' value="0" class="chk hidden" @if($product->color==0) checked @endif>
+                        <label for="nocolor">
+                            <span class="flex justify-center items-center w-6 h-6 rounded-full border border-slate-600 bg-transparent">
+                            </span>
+                        </label>
+                    </div> -->
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='black' name='color' value="1" class="chk hidden" @if($product->color==1) checked @endif>
+                        <label for="black">
+                            <span class="bg-black"></span>
+                        </label>
                     </div>
-
-                    <!-- hide color if null -->
-                    @if($product->color=='')
-                    <input type="color" id='color' name='color' class="input hidden" placeholder="color" value="{{$product->color}}">
-                    @else
-                    <input type="color" id='color' name='color' class="input" placeholder="color" value="{{$product->color}}">
-                    @endif
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='blue' name='color' value="2" class="w-4 h-4 chk hidden" @if($product->color==2) checked @endif>
+                        <label for="blue">
+                            <span class="bg-blue-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='gray' name='color' value="3" class="w-4 h-4 chk hidden" @if($product->color==3) checked @endif>
+                        <label for="gray">
+                            <span class="bg-gray-400"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='white' name='color' value="4" class="w-4 h-4 chk hidden" @if($product->color==4) checked @endif>
+                        <label for="white">
+                            <span class="border border-black bg-white"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='green' name='color' value="5" class="w-4 h-4 chk hidden" @if($product->color==5) checked @endif>
+                        <label for="green">
+                            <span class="bg-green-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='red' name='color' value="6" class="w-4 h-4 chk hidden" @if($product->color==6) checked @endif>
+                        <label for="red">
+                            <span class="bg-red-700"></span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center color">
+                        <input type="checkbox" id='yellow' name='color' value="7" class="w-4 h-4 chk hidden" @if($product->color==7) checked @endif>
+                        <label for="yellow">
+                            <span class="bg-orange-300"></span>
+                        </label>
+                    </div>
 
                 </div>
 
-                <label for="" class="mt-3">Image</label>
+                <label for="" class='mt-4'>Specific to</label>
+                <div class="flex items-center space-x-4 mt-4">
+                    <!-- <div class="flex space-x-2 items-center gender">
+                        <input type="checkbox" id='?' name="gender" value="?" class="chk hidden" @if($product->gender=='?') checked @endif>
+                        <label for="?">
+                            <span class="bg-gray-200">?</span>
+                        </label>
+                    </div> -->
+                    <div class="flex space-x-2 items-center gender">
+                        <input type="checkbox" id='M' name="gender" value="M" class="chk hidden" @if($product->gender=='M') checked @endif>
+                        <label for="M">
+                            <span class="bg-blue-200">M</span>
+                        </label>
+                    </div>
+                    <div class="flex space-x-2 items-center gender">
+                        <input type="checkbox" id='F' name="gender" value="F" class="chk hidden" @if($product->gender=='F') checked @endif>
+                        <label for="F">
+                            <span class="bg-orange-200">F</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <label for="" class="mt-4">Image</label>
                 <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()'>
 
             </div>
@@ -94,5 +156,15 @@
             preview_img.src = URL.createObjectURL(file)
         }
     }
+
+    // check only single color
+    $(document).on('click', '.color .chk', function() {
+        $('.color .chk').not(this).prop('checked', false);
+    });
+
+    // check only single gender
+    $(document).on('click', '.gender .chk', function() {
+        $('.gender .chk').not(this).prop('checked', false);
+    });
 </script>
 @endsection

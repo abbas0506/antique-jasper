@@ -48,6 +48,7 @@
             @endif
             <a href="{{route('products.show', $product)}}" class="flex flex-1 link items-center ml-4">{{$product->name}}</a>
             <!-- crud operation -->
+            <div class="w-24">{{$product->price}}</div>
             <div class="flex justify-center items-center space-x-4">
                 <a href="{{route('products.edit', $product)}}"><i class="bi bi-pencil-square"></i></a>
                 <form action="{{route('products.destroy',$product)}}" method="POST" id='del_form{{$product->id}}'>

@@ -51,7 +51,7 @@ class ArticleController extends Controller
     {
         //
         $product = Product::find($id);
-        return view('articles.show');
+        return view('articles.show', compact('product'));
     }
 
     /**
