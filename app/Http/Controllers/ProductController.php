@@ -170,12 +170,13 @@ class ProductController extends Controller
         $existing_image_url = public_path('images/products/') . $product->image;
 
         //remove existing image
-        if (file_exists($existing_image_url)) {
-            unlink($existing_image_url);
-        }
+
 
         $subcategory = $product->subcategory;
         try {
+            if (file_exists($existing_image_url)) {
+                unlink($existing_image_url);
+            }
             $product->delete();
             return redirect()->route('subcategories.show', $subcategory)->with('success', 'Successfully deleted');
         } catch (Exception $e) {
