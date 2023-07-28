@@ -167,6 +167,13 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $existing_image_url = public_path('images/products/') . $product->image;
+
+        //remove existing image
+        if (file_exists($existing_image_url)) {
+            unlink($existing_image_url);
+        }
+
         $subcategory = $product->subcategory;
         try {
             $product->delete();
