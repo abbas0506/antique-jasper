@@ -2,7 +2,7 @@
 @section('header')
 @endsection
 @section('body')
-<div class="container flex flex-col justify-center items-center bg-gradient-to-b max-w-screen h-screen from-slate-50 to-slate-400">
+<div class="container flex flex-col justify-center items-center max-w-screen h-screen bg-gradient-to-b  from-orange-50 to-orange-100">
     <div class="flex flex-col justify-center items-center md:w-1/3">
         <img src="{{asset('/images/logo.png')}}" alt="" class="h-60">
         <!-- if validation error -->
