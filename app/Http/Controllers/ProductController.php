@@ -57,7 +57,17 @@ class ProductController extends Controller
             if ($request->hasFile('image')) {
                 //save product image
                 $image_name = $product->id . '.' . $request->image->extension();
+
+                $image_url = public_path('images/products/') . $image_name;
+
+                //remove existing image
+                if (file_exists($image_url)) {
+                    unlink($image_url);
+                }
+
                 $request->file('image')->move(public_path('images/products/'), $image_name);
+
+
 
                 //replace autosaved original url of uploaded image name by its formatted name
                 $product->image = $image_name;
