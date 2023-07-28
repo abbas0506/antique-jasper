@@ -1,4 +1,5 @@
 <aside aria-label="Sidebar" id='sidebar' class="sidebar">
+    <div class="absolute top-2 right-2 hover:cursor-pointer" onclick="toggleSidebar()"><i class="bi bi-x text-[32px]"></i></div>
     <div class="flex justify-center pt-8 bg-red-50">
         <img src="{{asset('/images/logo.png')}}" alt="" class="w-24">
     </div>
