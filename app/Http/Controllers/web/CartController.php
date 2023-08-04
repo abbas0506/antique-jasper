@@ -22,10 +22,12 @@ class CartController extends Controller
         }
         $cart = session()->get('cart');
         // if cart is empty then this the first product
+
         if (!$cart) {
             $cart = [
                 $id => [
                     "name" => $product->name,
+                    'code' => $product->code,
                     "qty" => 1,
                     "price" => $product->price,
                     'image' => $product->image,
@@ -44,6 +46,7 @@ class CartController extends Controller
         // if item not exist in cart then add to cart with qty = 1
         $cart[$id] = [
             "name" => $product->name,
+            'code' => $product->code,
             "qty" => 1,
             "price" => $product->price,
             'image' => $product->image,
@@ -68,6 +71,7 @@ class CartController extends Controller
     public function show()
     {
         //
+
         return view('cart.show');
     }
 

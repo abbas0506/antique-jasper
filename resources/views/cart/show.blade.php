@@ -24,10 +24,25 @@
 
         <div class="flex items-center text-sm space-y-2">
             <div class="w-24 hidden md:flex"><img src="{{$url}}" class="w-16"></div>
-            <div class="flex-1">{{$details['name']}}</div>
+            <div class="flex-1">
+                <div>
+                    <div>{{$details['name']}}</div>
+                    <div>{{$details['code']}}</div>
+                </div>
+
+            </div>
             <div class="w-12 md:w-24 text-center">{{ $details['price'] }}</div>
-            <div class="w-12 md:w-24 text-center"><input type="number" value="{{ $details['qty'] }}" class="w-3/4 text-center"></div>
-            <div class="w-12 md:w-24 text-center">{{$details['price'] * $details['qty']}}</div>
+            <div class="w-12 md:w-24 flex items-center">
+                <i class="bi-dash"></i>
+                <div class="text-center w-8">
+                    {{ $details['qty'] }}
+                </div>
+                <i class="bi-plus"></i>
+            </div>
+
+            <div class="w-12 text-center">
+                {{$details['price'] * $details['qty']}}
+            </div>
         </div>
         @endforeach
         <!-- cart footer -->

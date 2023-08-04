@@ -21,7 +21,7 @@
                 <div>
                     <h4>{{$product->name}}</h4>
                     <div>AJ#{{$product->code}}</div>
-                    <div>{{$product->price}}</div>
+                    <div>PKR {{$product->price}}</div>
                 </div>
 
                 <div>
