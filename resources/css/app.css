@@ -212,20 +212,16 @@
         @apply text-slate-800 underline;
     }
 
+    .product-card {
+        @apply transition-all duration-500 ease-in-out;
+    }
     .product-card .img-container {
-        @apply relative overflow-clip;
+        @apply relative w-full h-32 sm:h-48 border border-slate-200 overflow-clip transition-all duration-500 ease-in-out;
     }
 
-    .product-card img {
-        @apply w-40 h-32 md:w-48 md:h-32 lg:w-64 lg:h-48 transition-all duration-500 ease-in-out;
+    .bg-img-hover-scale {
+        @apply w-full h-full bg-cover bg-center hover:scale-125 transition ease-in-out duration-1000;
     }
-    .product-card:hover img {
-        @apply scale-125;
-    }
-
-    /* .product-desc p {
-        @apply text-xs md:text-sm lg:text-base;
-    } */
 
     .product .preview-btn {
         @apply flex justify-center translate-y-20 transition-all duration-500 ease-in-out;
@@ -236,7 +232,7 @@
     .product:hover .preview-btn {
         @apply translate-y-0;
     }
-    .product-card .add-to-cart {
+    /* .product-card .add-to-cart {
         @apply flex justify-between mt-2;
     }
     .product-card .add-to-cart a {
@@ -244,10 +240,13 @@
     }
     .product-card .add-to-cart p {
         @apply text-slate-600 text-sm;
-    }
+    } */
 
-    .add2cart {
-        @apply flex justify-center items-center w-12 h-12 rounded-full border border-slate-200 hover:bg-slate-200;
+    .cart-icon .bi-heart {
+        @apply absolute top-2 right-2 text-slate-500 hover:text-red-800;
+    }
+    .cart-icon .bi-cart2 {
+        @apply absolute bottom-2 right-2 text-slate-500 hover:text-blue-600;
     }
 
     .color span {
