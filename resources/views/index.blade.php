@@ -11,7 +11,7 @@ $url=asset('images/ring.png');
         <div class="flex w-full md:w-1/2 h-full items-center">
             <div>
                 <h1 class="text-center md:text-left">ANTIQUE JASPER</h1>
-                <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free all over Pakistan.</p>
+                <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free for the order of any two items.</p>
             </div>
             <!-- <div class="text-center">
                 <img src="{{asset('images/ring.png')}}" alt="ring">

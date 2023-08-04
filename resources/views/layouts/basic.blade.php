@@ -21,9 +21,8 @@
 
     @yield('header')
     @yield('sidebar')
-    <div class="responsive-body">
-        @yield('body')
-    </div>
+
+    @yield('body')
     @yield('footer')
     <script src="{{asset('js/sweetalert2@10.js')}}"></script>
     <script src="{{asset('js/collapsible.js')}}"></script>

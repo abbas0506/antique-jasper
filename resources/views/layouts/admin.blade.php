@@ -9,7 +9,13 @@
 <x-admin.sidebar></x-admin.sidebar>
 @endsection
 
-@yield('page-content')
+@section('body')
+<div class="responsive-body">
+
+    @yield('page-content')
+</div>
+
+
 
 @endsection
 
