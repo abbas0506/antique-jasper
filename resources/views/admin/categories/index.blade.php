@@ -1,12 +1,11 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-32">
-    <div class="page-title">
-        <h3>Categories & Sub</h3>
-        <div class="bread-crumb">
-            List of all categories & their subcategories
-        </div>
+<div class="container pt-16">
+    <h3>Categories & Sub</h3>
+    <div class="bread-crumb">
+        List of all categories & their subcategories
     </div>
+
 
     <div class="mt-16">
         <a href="{{route('categories.create')}}" class="btn-teal py-2 mt-2">
@@ -34,7 +33,7 @@
     </div>
     @endif
 
-    <div class="mt-8">
+    <div class="rounded-lg mt-4">
         @foreach($categories as $category)
         <div class="collapsible">
             <div class="head">

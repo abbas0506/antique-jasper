@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('page-content')
-<section class="p-8">
-    <h1 class="page-title">Site Configuration</h1>
+<container class="">
+    <h2>Site Configuration</h2>
     <p class="bread-crumb">Login > config</p>
 
     <div class="grid grid-cols-3 space-x-5 mt-12">
@@ -72,6 +72,6 @@
             @endforeach
         </ul>
     </div>
-</section>
+</container>
 
 @endsection

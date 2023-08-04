@@ -6,6 +6,7 @@
     body {
         @apply max-w-screen-2xl;
     }
+
     thead th {
         @apply text-left text-sm;
     }
@@ -43,15 +44,31 @@
     } */
 }
 @layer components {
-    .sidebar {
-        @apply fixed top-0 -left-60 w-60 z-50 md:inline-block h-full bg-white shadow-xl text-slate-700 transition-all duration-1000 ease-in-out;
+    .responsive-body {
+        @apply md:pl-60 mt-16 bg-white min-h-screen;
     }
-    .sidebar.mobile {
-        @apply translate-x-60;
+    .header {
+        @apply fixed top-0 left-0 w-full h-16 z-40 bg-transparent border-b-[1px] border-sky-100 transition-[bg] duration-500 ease-in-out;
+    }
+    .header.scrolled {
+        @apply bg-white;
+    }
+    .sidebar {
+        @apply fixed top-0 md:top-16 -left-80 md:left-0 w-80 md:w-60 z-50 md:inline-block  h-full bg-sky-800 shadow-xl transition-all duration-1000 ease-in-out;
     }
 
-    .sidebar a:hover {
-        @apply text-teal-700;
+    .sidebar.mobile {
+        @apply translate-x-80;
+    }
+
+    .sidebar ul li {
+        @apply flex items-center space-x-4 text-slate-400 transition-all duration-500 ease-in-out;
+    }
+    .sidebar ul li:hover {
+        @apply text-slate-200;
+    }
+    .sidebar ul li.active {
+        @apply flex items-center space-x-4 text-slate-200;
     }
     .container {
         @apply px-4 md:px-24 min-w-full;
@@ -69,7 +86,7 @@
         @apply text-2xl text-green-700 font-normal tracking-wide;
     }
     .bread-crumb {
-        @apply text-sm text-slate-500 font-thin mt-2;
+        @apply flex items-center space-x-1 text-sm;
     }
     .bread-crumb a {
         @apply text-blue-600;
@@ -92,7 +109,7 @@
     }
 
     .header.admin {
-        @apply top-0 bg-slate-700 text-green-600;
+        @apply top-0 bg-slate-100 text-slate-800;
     }
 
     .bi-pencil-square {

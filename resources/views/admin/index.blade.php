@@ -1,8 +1,12 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-32 bg-slate-50">
+<div class="container pt-16 bg-slate-50">
     <h3>Dashboard</h3>
-    <p class="bread-crumb">Login > dashboard</p>
+    <div class="bread-crumb">
+        <div>Login</div>
+        <div>/</div>
+        <div>dashboard</div>
+    </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         <!-- pallette -->
