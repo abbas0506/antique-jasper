@@ -3,7 +3,7 @@
 <x-guest.marquee></x-guest.marquee>
 <div class="container pt-32 min-h-[98vh]">
     <!-- product info -->
-    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center mt-6">
         <div class="flex justify-center items-center">
             @if($product->image=='')
             <img src="{{asset('images/no-image.png')}}" alt="" id='' class="w-60">
@@ -16,55 +16,57 @@
             </div>
             @endif
         </div>
-        <div class="flex justify-center">
-            <div class="flex flex-col gap-y-2 divide-y">
-                <div>
-                    <h4>{{$product->name}}</h4>
-                    <div>AJ#{{$product->code}}</div>
-                    <div>{{$product->price}}</div>
-                </div>
 
-                <div>
-                    <label>Color</label>
-                    @if($product->color==1)
-                    <div class="w-6 h-6 bg-black"></div>
-                    @elseif($product->color==2)
-                    <div class="w-6 h-6 bg-blue-700"></div>
-                    @elseif($product->color==3)
-                    <div class="w-6 h-6 bg-gray-400"></div>
-                    @elseif($product->color==4)
-                    <div class="w-6 h-6 border border-slate-800 bg-white"></div>
-                    @elseif($product->color==5)
-                    <div class="w-6 h-6 bg-green-700"></div>
-                    @elseif($product->color==6)
-                    <div class="w-6 h-6 bg-red-700"></div>
-                    @elseif($product->color==7)
-                    <div class="w-6 h-6 bg-orange-300"></div>
-                    @else
-                    <div>NA</div>
-                    @endif
-                </div>
+        <div class="flex flex-col gap-y-4">
 
-                <div>
-                    <label>Gender</label>
-                    @if($product->gender=='')
-                    <div>NA</div>
-                    @else
-                    <div>{{$product->gender}}</div>
-                    @endif
-                </div>
-                <div>
-                    <label for="">Details</label>
-                    <p>{{$product->detail}}</p>
-                </div>
+            <div>
+                <label>Product Name</label>
+                <div>{{$product->name}}</div>
+            </div>
 
-                <div class="pt-4">
-                    <a href="{{route('cart.add', $product->id)}}" class="btn-blue rounded-none">ADD TO CART</a>
-                </div>
+            <div>
+                <label>Product Code</label>
+                <div>{{$product->code}}</div>
 
+            </div>
+            <div>
+                <label>Unit Price</label>
+                <div>{{$product->price}}</div>
+            </div>
+
+            <div>
+                <label>Color</label>
+                @if($product->color==1)
+                <div class="w-6 h-6 bg-black"></div>
+                @elseif($product->color==2)
+                <div class="w-6 h-6 bg-blue-700"></div>
+                @elseif($product->color==3)
+                <div class="w-6 h-6 bg-gray-400"></div>
+                @elseif($product->color==4)
+                <div class="w-6 h-6 border border-slate-800 bg-white"></div>
+                @elseif($product->color==5)
+                <div class="w-6 h-6 bg-green-700"></div>
+                @elseif($product->color==6)
+                <div class="w-6 h-6 bg-red-700"></div>
+                @elseif($product->color==7)
+                <div class="w-6 h-6 bg-orange-300"></div>
+                @else
+                <div>NA</div>
+                @endif
+            </div>
+
+            <div>
+                <label>Specific to gender</label>
+                @if($product->gender=='')
+                <div>NA</div>
+                @else
+                <div>{{$product->gender}}</div>
+                @endif
             </div>
 
         </div>
+
+
     </div>
 </div>
 @endsection
