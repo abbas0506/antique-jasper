@@ -211,13 +211,22 @@
     #product-nav ul li.active {
         @apply text-slate-800 underline;
     }
-    .product {
-        @apply relative border overflow-clip;
+
+    .product-card .img-container {
+        @apply relative overflow-clip;
     }
 
-    .product img {
-        @apply hover:scale-110 transition-all duration-1000 inset-0 ease-in-out;
+    .product-card img {
+        @apply w-40 h-32 md:w-48 md:h-32 lg:w-64 lg:h-48 transition-all duration-500 ease-in-out;
     }
+    .product-card:hover img {
+        @apply scale-125;
+    }
+
+    /* .product-desc p {
+        @apply text-xs md:text-sm lg:text-base;
+    } */
+
     .product .preview-btn {
         @apply flex justify-center translate-y-20 transition-all duration-500 ease-in-out;
     }

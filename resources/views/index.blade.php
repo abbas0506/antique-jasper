@@ -99,20 +99,38 @@
         </div>
         <!-- product listing -->
         <div class="mt-16">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
                 @foreach($products as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;
                 @endphp
                 <div class="product-card">
                     <a href="{{route('articles.show',$product)}}">
-                        <div class="product">
-                            <img src="{{$url}}" alt="" class="w-full h-2/3">
-                            <!-- <div class="preview-btn">
-                            <button>Quick View</button>
-                        </div> -->
+                        <div class="img-container">
+                            <img src="{{$url}}" alt="" class="bg-cover">
                         </div>
-                        <div class="add-to-cart">
+                        <div class="product-desc mt-2">
+
+                            @php
+                            if(strlen($product->name)>30)
+                            $reducedName=substr($product->name,0,30)."...";
+                            else
+                            $reducedName=$product->name;
+                            @endphp
+
+
+                            <p class="text-xs md:text-sm text-slate-900">{{$reducedName}} </p>
+                            <p class="mt-1 text-xs md:text-sm text-slate-600">AJ#{{$product->code}} &nbsp PKR {{$product->price}}</p>
+
+                            <!-- <div class="flex items-center">
+                                <a href="{{route('cart.add', $product->id)}}" class="add2cart">
+                                    <i class="bi bi-cart2"></i>
+                                </a>
+                            </div> -->
+                        </div>
+
+
+                        <!-- <div class="add-to-cart">
                             <div>
                                 <a href="{{route('articles.show',$product)}}">{{$product->name}} </a>
                                 <p>AJ#{{$product->code}}, &nbsp Rs. {{$product->price}}</p>
@@ -122,8 +140,7 @@
                                     <i class="bi bi-cart2"></i>
                                 </a>
                             </div>
-
-                        </div>
+                        </div> -->
                     </a>
                 </div>
 

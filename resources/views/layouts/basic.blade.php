@@ -12,7 +12,7 @@
     @vite(['resources/js/app.js','resources/css/app.css'])
     <style>
         body {
-            font-family: 'Poppins-Regular', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
