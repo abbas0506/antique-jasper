@@ -108,14 +108,13 @@ $url=asset('images/ring.png');
                 $url=asset('images/products')."/".$product->image;
                 @endphp
                 <div class="product-card">
-                    <a href="{{route('articles.show',$product)}}" class="hover:cursor-pointer">
+                    <a href="{{route('articles.show',$product)}}">
                         <div class="img-container">
                             <div class="bg-img-hover-scale" style="background-image: url('{{asset($url)}}');"></div>
                             <div class="cart-icon">
                                 <a href="{{route('cart.add', $product->id)}}">
-                                    <i class="bi-cart2 hover:text-blue-600"></i>
+                                    <i class="bi bi-cart2"></i>
                                 </a>
-                                <!-- <i class="bi-heart hover:text-red-500 text-[14px]"></i> -->
                             </div>
                         </div>
                         <div class="product-desc p-2">
