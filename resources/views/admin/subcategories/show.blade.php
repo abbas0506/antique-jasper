@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container ">
+<div class="container pt-16">
     <h3>Categories & Sub</h3>
     <div class="bread-crumb">
         <a href="{{route('categories.index')}}">Categories </a>

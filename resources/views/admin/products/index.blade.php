@@ -4,7 +4,7 @@
     <h1 class="page-title">Products</h1>
     <p class="bread-crumb">Login > products</p>
 
-    <div class="container ">
+    <div class="container pt-16 ">
         @foreach($categories as $category)
         <div class="collapsible">
             <div class="head">
