@@ -99,31 +99,34 @@
         </div>
         <!-- product listing -->
         <div class="mt-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 md:gap-x-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 @foreach($products as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;
                 @endphp
                 <div class="product-card">
-                    <div class="product">
-                        <img src="{{$url}}" alt="" class="w-full h-2/3">
-                        <!-- <div class="preview-btn">
+                    <a href="{{route('articles.show',$product)}}">
+                        <div class="product">
+                            <img src="{{$url}}" alt="" class="w-full h-2/3">
+                            <!-- <div class="preview-btn">
                             <button>Quick View</button>
                         </div> -->
-                    </div>
-                    <div class="add-to-cart">
-                        <div>
-                            <a href="{{route('articles.show',$product)}}">{{$product->name}} </a>
-                            <p>AJ#{{$product->code}}, &nbsp Rs. {{$product->price}}</p>
                         </div>
-                        <div class="flex items-center">
-                            <a href="{{route('cart.add', $product->id)}}" class="add2cart">
-                                <i class="bi bi-cart2"></i>
-                            </a>
-                        </div>
+                        <div class="add-to-cart">
+                            <div>
+                                <a href="{{route('articles.show',$product)}}">{{$product->name}} </a>
+                                <p>AJ#{{$product->code}}, &nbsp Rs. {{$product->price}}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <a href="{{route('cart.add', $product->id)}}" class="add2cart">
+                                    <i class="bi bi-cart2"></i>
+                                </a>
+                            </div>
 
-                    </div>
+                        </div>
+                    </a>
                 </div>
+
                 @endforeach
 
             </div>

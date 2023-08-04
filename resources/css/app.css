@@ -231,7 +231,7 @@
         @apply flex justify-between mt-2;
     }
     .product-card .add-to-cart a {
-        @apply text-blue-400 font-thin hover:cursor-pointer hover:text-blue-600;
+        @apply text-slate-800 font-thin;
     }
     .product-card .add-to-cart p {
         @apply text-slate-600 text-sm;
