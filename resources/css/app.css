@@ -45,10 +45,10 @@
 }
 @layer components {
     .responsive-body {
-        @apply mt-24 bg-white min-h-screen;
+        @apply bg-white min-h-screen md:pl-60 pt-16;
     }
     .container {
-        @apply p-4 md:px-24 min-w-full bg-white;
+        @apply p-4 md:px-24 w-full bg-white;
     }
     .bread-crumb {
         @apply flex flex-wrap items-center space-x-1 text-sm;
@@ -63,16 +63,26 @@
         @apply text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4;
     }
     .marquee {
-        @apply fixed top-0 left-0 w-full h-8 z-30 px-4 md:px-24 flex items-center justify-between;
+        @apply fixed top-0 left-0 w-full h-8 z-30 px-4 md:px-24 bg-slate-800 text-sm text-white flex items-center justify-between;
     }
     .header {
-        @apply fixed top-8 left-0 w-full h-16 z-40 px-4 md:px-24 bg-transparent transition-all duration-500 ease-in-out;
+        @apply fixed top-8 left-0 w-full h-16 z-30 px-4 md:px-24 bg-transparent transition-all duration-500 ease-in-out;
     }
     .header.scrolled {
-        @apply top-0 bg-white border-b-[1px] text-slate-800;
+        @apply top-0 z-40 bg-white border-b-[1px] text-slate-800;
     }
     .custom-input {
         @apply w-full p-2 mt-1 bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out;
+    }
+    /* .header {
+        @apply fixed top-12 md:top-10 left-0 w-full h-16 z-40 bg-transparent transition-all duration-500 ease-in-out;
+    }
+    .header.scrolled {
+        @apply top-0 bg-white border-b-[1px] text-slate-800;
+    } */
+
+    .header.admin {
+        @apply top-0 text-teal-800 bg-transparent;
     }
 
     /* .responsive-body {
@@ -96,13 +106,13 @@
     }
 
     .sidebar ul li {
-        @apply flex items-center space-x-4 text-slate-400 transition-all duration-500 ease-in-out;
+        @apply flex items-center space-x-4 text-slate-300 transition-all duration-500 ease-in-out;
     }
     .sidebar ul li:hover {
-        @apply text-slate-200;
+        @apply text-slate-500;
     }
     .sidebar ul li.active {
-        @apply flex items-center space-x-4 text-slate-200;
+        @apply flex items-center space-x-4 text-teal-800;
     }
     .container {
         @apply px-4 md:px-24 min-w-full;
@@ -134,16 +144,6 @@
     }
     .link {
         @apply text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4;
-    }
-    .header {
-        @apply fixed top-12 md:top-10 left-0 w-full h-16 z-40 bg-transparent transition-all duration-500 ease-in-out;
-    }
-    .header.scrolled {
-        @apply top-0 bg-white border-b-[1px] text-slate-800;
-    }
-
-    .header.admin {
-        @apply top-0 bg-slate-100 text-slate-800;
     }
 
     .bi-pencil-square {

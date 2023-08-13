@@ -1,12 +1,11 @@
-<div class="marquee bg-slate-800 text-sm text-white">
-    <div class="">
+<div class="marquee">
+    <div class="w-1/2">
         <marquee behavior="" direction="">Enjoy free shipping on two or more items' order</marquee>
     </div>
-
-    <div class="flex items-center justify-center md:justify-end space-x-2 w-full">
-        <a href="https://wa.me/+923044933477" target="_blank">
+    <div class="flex w-1/2 items-center justify-end space-x-2">
+        <a href="https://wa.me/+923044933477" target="_blank" class="flex items-center">
             <i class="bi bi-whatsapp"></i>
-            +92 304 4933477
+            <span class="hidden md:flex ml-2">+92 304 4933477</span>
         </a>
         <a href="https://web.facebook.com/AntiqueJasper?_rdc=1&_rdr" target="_blank"><i class="bi bi-facebook"></i></a>
         <a href="https://www.instagram.com/antique_jasper/" target="_blank"><i class="bi bi-instagram text-slate-300"></i></a>

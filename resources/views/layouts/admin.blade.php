@@ -1,5 +1,4 @@
 @extends('layouts.basic')
-@section('body')
 
 @section('header')
 <x-admin.header></x-admin.header>
@@ -11,11 +10,8 @@
 
 @section('body')
 <div class="responsive-body">
-
     @yield('page-content')
 </div>
-
-
 
 @endsection
 

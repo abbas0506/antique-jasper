@@ -1,26 +1,19 @@
 @extends('layouts.guest')
 
-@section('responsive-body')
+@section('body')
 <!-- hero section -->
 @php
 $url=asset('images/ring.png');
 @endphp
+
 <section class="h-screen bg-orange-50 bg-right-bottom bg-no-repeat" style="background-image: url('{{$url}}');">
-    <div class="container h-full">
-        <div class="flex w-full md:w-1/2 h-full items-center">
-            <div>
-                <h1 class="text-center md:text-left">ANTIQUE JASPER</h1>
-                <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free for the order of any two items.</p>
-            </div>
-            <!-- <div class="text-center">
-                <img src="{{asset('images/ring.png')}}" alt="ring">
-            </div> -->
+    <div class="flex w-full md:w-1/2 h-full items-center">
+        <div class="pl-4 md:pl-24 mt-16">
+            <h1 class="text-center md:text-left">ANTIQUE JASPER</h1>
+            <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free for the order of any two items.</p>
         </div>
-        <!-- <div class="flex flex-wrap-reverse items-center justify-between h-full">
 
-        </div> -->
     </div>
-
 </section>
 
 <!-- featured items section -->
@@ -142,5 +135,4 @@ $url=asset('images/ring.png');
         </div>
     </div>
 </section>
-
 @endsection

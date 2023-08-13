@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
-@section('responsive-body')
-<div class="container">
+@section('body')
+<section class="h-screen bg-orange-50 pt-24">
     <div class="w-full md:w-2/3 mx-auto">
         <h1 class="mt-32 text-center">User Policy</h1>
         <ol class="mt-8 text-slate-600 list-outside flex flex-col space-y-2">
@@ -10,6 +10,5 @@
             <li>If the product is damaged or there is any fault or difference, Antique Jasper will be responsible for changing the product. The customer would have to resend the parcel through Pakistan post courier service at AntiqueJasper's address.</li>
         </ol>
     </div>
-</div>
 </section>
 @endsection
