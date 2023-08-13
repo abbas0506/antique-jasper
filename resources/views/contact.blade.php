@@ -1,8 +1,8 @@
 @extends('layouts.guest')
 
 @section('body')
-<section class="h-screen bg-orange-50 pt-24">
-    <div class="w-full md:w-2/3 mx-auto">
+<section class="min-h-screen bg-orange-50 pt-24">
+    <div class="w-full md:w-2/3 mx-auto p-4">
         <h1 class="mt-32 text-center">Contact Us</h1>
         <p class="mt-8 leading-relaxed text-slate-600 text-center">Feel free to place your queries. Our support team is quick to respond, ensuring that no question goes unanswered.</p>
 
