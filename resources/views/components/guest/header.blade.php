@@ -1,5 +1,6 @@
-<header class="header">
-    <div class="container">
+<div>
+    <x-guest.marquee></x-guest.marquee>
+    <header class="header">
         <div class="flex flex-wrap justify-between w-full">
             <div class="flex flex-wrap items-center">
                 <!-- <div><span class="font-bold text-lg">ANTIQUE</span> <span class="text-xs">JASPER</span></div> -->
@@ -10,13 +11,13 @@
                             <a href="{{url('/')}}">Home</a>
                         </li>
                         <li>
-                            <a href="#">Policy</a>
+                            <a href="{{url('policy')}}">Policy</a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="{{url('about')}}">About</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="{{url('contact')}}">Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -35,8 +36,5 @@
                 </div>
             </div>
         </div>
-
-
-    </div>
-
-</header>
+    </header>
+</div>

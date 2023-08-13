@@ -45,6 +45,37 @@
 }
 @layer components {
     .responsive-body {
+        @apply mt-24 bg-white min-h-screen;
+    }
+    .container {
+        @apply p-4 md:px-24 min-w-full bg-white;
+    }
+    .bread-crumb {
+        @apply flex flex-wrap items-center space-x-1 text-sm;
+    }
+    .bread-crumb a {
+        @apply text-blue-600;
+    }
+    .chevron-right::after {
+        content: "\203A";
+    }
+    .link {
+        @apply text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4;
+    }
+    .marquee {
+        @apply fixed top-0 left-0 w-full h-8 z-30 px-4 md:px-24 flex items-center justify-between;
+    }
+    .header {
+        @apply fixed top-8 left-0 w-full h-16 z-40 px-4 md:px-24 bg-transparent transition-all duration-500 ease-in-out;
+    }
+    .header.scrolled {
+        @apply top-0 bg-white border-b-[1px] text-slate-800;
+    }
+    .custom-input {
+        @apply w-full p-2 mt-1 bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out;
+    }
+
+    /* .responsive-body {
         @apply md:pl-60 mt-16 bg-white min-h-screen;
     }
     .header {
@@ -52,7 +83,7 @@
     }
     .header.scrolled {
         @apply bg-white;
-    }
+    } */
     .sidebar {
         @apply fixed top-0 md:top-16 -left-80 md:left-0 w-80 md:w-60 z-50 md:inline-block  h-full bg-sky-800 shadow-xl transition-all duration-1000 ease-in-out;
     }

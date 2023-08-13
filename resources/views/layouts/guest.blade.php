@@ -6,9 +6,10 @@
 <x-guest.sidebar></x-guest.sidebar>
 @endsection
 
-@section('body')
+<div class="responsive-body">
+    @yield('responsive-body')
+</div>
 
-@endsection
 @section('footer')
 <x-guest.footer></x-guest.footer>
 @endsection

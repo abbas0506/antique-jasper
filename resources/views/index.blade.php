@@ -1,12 +1,11 @@
 @extends('layouts.guest')
 
-@section('body')
+@section('responsive-body')
 <!-- hero section -->
 @php
 $url=asset('images/ring.png');
 @endphp
 <section class="h-screen bg-orange-50 bg-right-bottom bg-no-repeat" style="background-image: url('{{$url}}');">
-    <x-guest.marquee></x-guest.marquee>
     <div class="container h-full">
         <div class="flex w-full md:w-1/2 h-full items-center">
             <div>

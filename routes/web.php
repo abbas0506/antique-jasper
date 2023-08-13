@@ -43,7 +43,11 @@ Route::get('/{url}', function () {
         return redirect('dashboard');
 })->where('url', "admin|login|signin");
 
+Route::view('policy', 'policy');
+Route::view('about', 'about');
+Route::view('contact', 'contact');
 Route::get('dashboard', [AuthController::class, 'index']);
+
 Route::post('login', [AuthController::class, 'login']);
 Route::get('signout', [AuthController::class, 'signout']);
 
