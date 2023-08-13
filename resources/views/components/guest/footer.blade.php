@@ -5,10 +5,18 @@
 
             <nav class="flex justify-center items-center space">
                 <ul class="flex flex-wrap space-x-4 mt-4 text-xs">
-                    <li>Home</li>
-                    <li>Policy</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li>
+                        <a href="{{url('/')}}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{url('policy')}}">Policy</a>
+                    </li>
+                    <li>
+                        <a href="{{url('about')}}">About</a>
+                    </li>
+                    <li>
+                        <a href="{{url('contact')}}">Contact</a>
+                    </li>
                 </ul>
             </nav>
             <div class="flex justify-center items-center space-x-3 text-slate-200 mt-2">
