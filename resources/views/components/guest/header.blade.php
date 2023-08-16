@@ -21,7 +21,7 @@
             </nav>
         </div>
         <div class="flex flex-wrap items-center space-x-4">
-            <i class="bi bi-search" onclick="showSearchBar()"></i>
+            <i class="bi bi-search hover:cursor-pointer" onclick="showSearchBar()"></i>
             <a href="{{route('cart.show')}}" class="relative">
                 <i class="bi bi-cart2"></i>
                 <span class="flex justify-center item text-xs absolute -top-2 -right-1 w-4 h-4 rounded-full bg-red-200">{{ count((array) session('cart')) }}</span>
@@ -40,7 +40,7 @@
         @csrf
         <div class="w-3/4 mx-auto relative">
             <input type="text" name='searchby' class="custom-input p-2 w-full" placeholder="I need ...">
-            <i class="bi-search absolute top-4 right-4 hover:cursor-pointer"></i>
+            <i class="bi-search absolute top-4 right-4"></i>
         </div>
     </form>
 </div>
