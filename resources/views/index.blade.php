@@ -10,7 +10,7 @@ $url=asset('images/ring.png');
     <div class="flex w-full md:w-1/2 h-full items-center">
         <div class="pl-4 md:pl-24 mt-16">
             <h1 class="text-center md:text-left">ANTIQUE JASPER</h1>
-            <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free for the order of any two items.</p>
+            <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free on the order of two or more items.</p>
         </div>
 
     </div>
@@ -27,7 +27,7 @@ $url=asset('images/ring.png');
             <!-- item  -->
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('guest.products.filter',['G','F'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>
@@ -39,7 +39,7 @@ $url=asset('images/ring.png');
             </div>
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('guest.products.filter',['G','M'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>

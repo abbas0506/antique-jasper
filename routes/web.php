@@ -6,6 +6,7 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Guest\ProductController as GuestProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SubcategoryController;
@@ -32,7 +33,7 @@ Route::get('/', function () {
             return redirect('admin');
     } else {
         $products = Product::all();
-        return view('index', compact('products'));
+        return redirect()->route('guest.products.index');
     }
 });
 
@@ -72,6 +73,12 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
 // 
+
+Route::group(['prefix' => 'guest', 'as' => 'guest.'], function () {
+    Route::resource('products', GuestProductController::class);
+    Route::get('products/filter/{type}/{val}', [GuestProductController::class, 'filter'])->name('products.filter');
+    Route::post('products/search', [GuestProductController::class, 'search'])->name('products.search');
+});
 Route::resource('articles', ArticleController::class);
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');

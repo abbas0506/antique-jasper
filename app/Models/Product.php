@@ -23,4 +23,16 @@ class Product extends Model
     {
         return $this->belongsTo(Subcategory::class);
     }
+    public function scopeColor($query, $color)
+    {
+        return $query->where('color', $color);
+    }
+    public function scopeGender($query, $gender)
+    {
+        return $query->where('gender', $gender);
+    }
+    public function scopePriceBetween($query, $min, $max)
+    {
+        return $query->whereBetween('price', [$min, $max]);
+    }
 }
