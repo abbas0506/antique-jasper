@@ -40,7 +40,7 @@
         @csrf
         <div class="w-3/4 mx-auto relative">
             <input type="text" name='searchby' class="custom-input p-2 w-full" placeholder="I need ...">
-            <i class="bi-search absolute top-4 right-4"></i>
+            <i class="bi-search absolute top-4 right-4 hover:cursor-pointer"></i>
         </div>
     </form>
 </div>
