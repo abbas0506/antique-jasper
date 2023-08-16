@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::query()->gender(6)->get();
+        $products = Product::all();
         return view('index', compact('products'));
     }
 
