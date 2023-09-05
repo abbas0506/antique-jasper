@@ -1,37 +1,28 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-16 ">
-    <h3>Config</h3>
+<div class="container">
+    <h4>Edit Sub-Category</h4>
     <div class="bread-crumb">
-        <a href="{{route('categories.index')}}">Categories </a>
-        <a href="{{route('subcategories.show',$product->subcategory)}}">{{$product->subcategory->name}} </a>
-        {{$product->name}}
+        <a href="/">Home</a>
+        <div>/</div>
+        <a href="{{route('admin.categories.show', $product->subcategory->category)}}">{{$product->subcategory->category->name}}</a>
+        <div>/</div>
+        <a href="{{route('admin.subcategories.show', $product->subcategory)}}">{{$product->subcategory->name}}</a>
+        <div>/</div>
+        <div>{{$product->name}}</div>
+        <div>/</div>
+        <div>Edit</div>
     </div>
 
-    @if ($errors->any())
-    <div class="alert-danger mt-8">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
     @endif
-
-    @if(session('success'))
-    <div class="flex alert-success items-center mt-8">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-        </svg>
-
-        {{session('success')}}
-    </div>
-    @endif
-
-    <h3 class="mt-16"><span class="chevron-right"> {{$product->subcategory->category->name}} </span><span class="chevron-right"> {{$product->subcategory->name}} </span> {{$product->name}}</h3>
 
     <!-- product info -->
-    <div class="grid grid-cols-1 md:grid-cols-2 items-center flex-1 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center flex-1 mt-8">
         <div class="flex flex-col">
             <label for="" class=''>Product Name</label>
             <div>{{$product->name}}</div>
