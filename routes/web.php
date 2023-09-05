@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConfigController;
@@ -37,12 +38,14 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/{url}', function () {
-    if (Auth::guest())
-        return view('login');
-    else
-        return redirect('dashboard');
-})->where('url', "admin|login|signin");
+Route::view('login', 'login');
+
+// Route::get('/{url}', function () {
+//     if (Auth::check())
+//         return redirect('admin');
+//     else
+//         return redirect('/');
+// })->where('url', "login|signin");
 
 Route::view('policy', 'policy');
 Route::view('about', 'about');
@@ -54,14 +57,14 @@ Route::get('signout', [AuthController::class, 'signout']);
 
 Route::get('users.changepw', [AuthController::class, 'changepw'])->name('users.changepw');
 
-Route::group(['middleware' => ['role:admin']], function () {
-
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
+    Route::get('/', [AdminController::class, 'index']);
     Route::resource('config', ConfigController::class)->only('index');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
 
-    Route::get('subcategories.add/{id}', [SubcategoryController::class, 'add'])->name('subcategories.add');
-    Route::get('products.add/{id}', [ProductController::class, 'add'])->name('products.add');
+    Route::get('subcategories/add/{id}', [SubcategoryController::class, 'add']);
+    Route::get('products/add/{id}', [ProductController::class, 'add']);
 
     Route::resource('products', ProductController::class);
     Route::resource('countries', CountryController::class);

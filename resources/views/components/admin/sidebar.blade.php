@@ -6,26 +6,26 @@
     <div class="mt-12 px-5">
         <ul class="flex flex-col space-y-4">
             <li>
-                <a href="{{url('dashboard')}}">
+                <a href="{{url('/')}}">
                     <i class="bi bi-grid-1x2"></i>
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{url('categories')}}">
-                    <i class="bi bi-tags"></i>
-                    <span class="ml-3">Configuration</span>
+                <a href="{{route('admin.categories.index')}}">
+                    <i class="bi bi-gear"></i>
+                    <span class="ml-3">Products</span>
                 </a>
             </li>
             <li>
-                <a href="{{url('users')}}">
+                <a href="#">
                     <i class="bi bi-bag-check"></i>
                     <span class="ml-3">Orders</span>
                 </a>
             </li>
 
             <li>
-                <a href="{{url('semesters')}}">
+                <a href="#">
                     <i class="bi bi-truck-flatbed"></i>
                     <span class="ml-3"> Shipments</span>
                 </a>

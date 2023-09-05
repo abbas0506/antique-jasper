@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-16 bg-slate-50">
+<div class="container pt-16 bg-slate-100">
     <h3>Dashboard</h3>
     <div class="bread-crumb">
         <div>Login</div>
@@ -10,7 +10,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
         <!-- pallette -->
-        <a href="{{route('countries.index')}}" class="pallette text-orange-400 bg-orange-50 hover:bg-orange-100">
+        <a href="#" class="pallette text-orange-400 bg-orange-50 hover:bg-orange-100">
             <div class="flex justify-center items-center w-16">
                 <i class="bi bi-clock text-xl"></i>
             </div>

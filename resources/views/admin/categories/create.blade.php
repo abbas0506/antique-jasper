@@ -1,38 +1,33 @@
 @extends('layouts.admin')
 @section('page-content')
 
-<div class="container pt-32">
-
-    <h3>Config</h3>
+<div class="container">
+    <h4>New Category</h4>
     <div class="bread-crumb">
-        <a href="{{route('categories.index')}}" class="link"> Categories </a>
-        New
+        <a href="/">Home</a>
+        <div>/</div>
+        <a href="{{route('admin.categories.index')}}">Categories</a>
+        <div>/</div>
+        <div>New</div>
     </div>
 
-    <div class="mt-16">
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
+    @endif
 
-        @if ($errors->any())
-        <div class="alert-danger mt-8">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <form action="{{route('admin.categories.store')}}" method='post' class="flex flex-col mt-16" onsubmit="return validate(event)">
+        @csrf
+
+        <label for="">Category Name*</label>
+        <input type="text" id='name' name='name' class="input mt-2" placeholder="Crockery">
+
+        <div class="mt-4">
+            <button type="submit" class="btn-teal p-2">Save Now</button>
         </div>
-        @endif
-
-        <form action="{{route('categories.store')}}" method='post' class="flex flex-col w-full" onsubmit="return validate(event)">
-            @csrf
-
-            <label for="">Category Name*</label>
-            <input type="text" id='name' name='name' class="input mt-2" placeholder="Crockery">
-
-            <div class="mt-4">
-                <button type="submit" class="btn-indigo-rounded">Save Category</button>
-            </div>
-        </form>
-    </div>
-
+    </form>
 </div>
 
 @endsection

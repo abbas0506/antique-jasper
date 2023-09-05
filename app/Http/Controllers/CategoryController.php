@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
         try {
             Category::create($request->all());
-            return redirect()->route('categories.index')->with('success', 'Successfully created');
+            return redirect()->route('admin.categories.index')->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -62,6 +62,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -92,7 +93,7 @@ class CategoryController extends Controller
 
         try {
             $category->update($request->all());
-            return redirect()->route('categories.index')->with('success', 'Successfully updated');;
+            return redirect()->route('admin.categories.index')->with('success', 'Successfully updated');;
         } catch (Exception $ex) {
             return redirect()->back()->withErrors($ex->getMessage());
         }

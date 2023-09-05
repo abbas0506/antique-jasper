@@ -1,25 +1,27 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-16 ">
-    <h3>Config</h3>
+<div class="container">
+    <h4>Edit Sub-Category</h4>
     <div class="bread-crumb">
-        <a href="{{route('categories.index')}}">Categories </a>
-        <a href="{{route('subcategories.show',$product->subcategory)}}">{{$product->subcategory->name}} </a>
-        {{$product->name}} :: edit
+        <a href="/">Home</a>
+        <div>/</div>
+        <a href="{{route('admin.categories.show', $product->subcategory->category)}}">{{$product->subcategory->category->name}}</a>
+        <div>/</div>
+        <a href="{{route('admin.subcategories.show', $product->subcategory)}}">{{$product->subcategory->name}}</a>
+        <div>/</div>
+        <div>{{$product->name}}</div>
+        <div>/</div>
+        <div>Edit</div>
     </div>
 
-    @if ($errors->any())
-    <div class="alert-danger mt-8">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
     @endif
 
-    <h3 class="mt-16"><span class="chevron-right"> {{$product->subcategory->category->name}} </span><span class="chevron-right"> {{$product->subcategory->name}} </span> {{$product->name}}</h3>
-    <form action="{{route('products.update', $product)}}" method='post' class="flex flex-col w-full mt-8" enctype="multipart/form-data" onsubmit="return validate(event)">
+    <form action="{{route('admin.products.update', $product)}}" method='post' class="flex flex-col w-full mt-8" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         @method('PATCH')
         <div class="grid grid-cols-1 md:grid-cols-2 items-center">

@@ -1,30 +1,33 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-16 ">
-    <h3>Config</h3>
+<div class="container">
+    <h4>Edit Sub-Category</h4>
     <div class="bread-crumb">
-        <a href="{{route('categories.index')}}">Categories </a>
-        {{$subcategory->name}} :: edit
+        <a href="/">Home</a>
+        <div>/</div>
+        <a href="{{route('admin.categories.show', $subcategory->category)}}">{{$subcategory->category->name}}</a>
+        <div>/</div>
+        <div>{{$subcategory->name}}</div>
+        <div>/</div>
+        <div>Edit</div>
     </div>
 
-    @if ($errors->any())
-    <div class="alert-danger mt-8">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
     @endif
 
-    <form action="{{route('subcategories.update', $subcategory)}}" method='post' class="flex flex-col w-full mt-16" onsubmit="return validate(event)">
+
+    <form action="{{route('admin.subcategories.update', $subcategory)}}" method='post' class="flex flex-col w-full mt-16" onsubmit="return validate(event)">
         @csrf
         @method('PATCH')
         <label for="">Sub Category Name*</label>
         <input type="text" id='name' name='name' class="input mt-2" placeholder="Cup" value="{{$subcategory->name}}">
 
         <div class="mt-4">
-            <button type="submit" class="btn-indigo-rounded">Update Sub-Category</button>
+            <button type="submit" class="btn-indigo">Update Now</button>
         </div>
     </form>
 </div>

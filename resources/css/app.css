@@ -7,13 +7,27 @@
         @apply max-w-screen-2xl;
     }
 
-    thead th {
-        @apply text-left text-sm;
+    td table tbody tr td {
+        @apply p-1 text-sm text-gray-600 border-none;
     }
 
-    tbody tr td {
-        @apply text-sm py-2;
+    table.borderless thead tr th,
+    table.borderless tbody tr td {
+        @apply border-0;
     }
+
+    .tr:nth-child(even) {
+        @apply bg-slate-100;
+    }
+    thead tr th,
+    tbody tr td {
+        @apply text-center text-sm py-1;
+    }
+
+    thead tr th {
+        @apply bg-slate-100;
+    }
+
     label {
         @apply text-sm text-slate-500;
     }
@@ -27,7 +41,7 @@
         @apply text-xl font-bold;
     }
     h4 {
-        @apply text-lg font-bold;
+        @apply text-lg font-semibold;
     }
     p {
         @apply text-slate-600 leading-relaxed;
@@ -45,10 +59,10 @@
 }
 @layer components {
     .responsive-body {
-        @apply bg-white min-h-screen md:pl-60 pt-16;
+        @apply md:pl-60 mt-16 bg-white;
     }
     .container {
-        @apply p-4 md:px-24 w-full bg-white;
+        @apply p-4 md:p-12 min-w-full bg-white;
     }
     .bread-crumb {
         @apply flex flex-wrap items-center space-x-1 text-sm;
@@ -66,34 +80,15 @@
         @apply fixed top-0 left-0 w-full h-8 z-30 px-4 md:px-24 bg-slate-800 text-sm text-white flex items-center justify-between;
     }
     .header {
-        @apply fixed top-8 left-0 w-full h-16 z-30 px-4 md:px-24 bg-transparent transition-all duration-500 ease-in-out;
+        @apply fixed top-0 left-0 w-full h-16 z-40 md:px-24 shadow bg-transparent transition-all duration-500 ease-in-out;
     }
     .header.scrolled {
-        @apply top-0 z-40 bg-white border-b-[1px] text-slate-800;
+        @apply top-0 bg-white border-b-[1px] text-slate-800;
     }
     .custom-input {
         @apply w-full p-2 mt-1 bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out;
     }
-    /* .header {
-        @apply fixed top-12 md:top-10 left-0 w-full h-16 z-40 bg-transparent transition-all duration-500 ease-in-out;
-    }
-    .header.scrolled {
-        @apply top-0 bg-white border-b-[1px] text-slate-800;
-    } */
 
-    .header.admin {
-        @apply top-0 text-teal-800 bg-transparent;
-    }
-
-    /* .responsive-body {
-        @apply md:pl-60 mt-16 bg-white min-h-screen;
-    }
-    .header {
-        @apply fixed top-0 left-0 w-full h-16 z-40 bg-transparent border-b-[1px] border-sky-100 transition-[bg] duration-500 ease-in-out;
-    }
-    .header.scrolled {
-        @apply bg-white;
-    } */
     .sidebar {
         @apply fixed top-0 md:top-16 -left-80 md:left-0 w-80 md:w-60 z-50 md:inline-block  h-full bg-sky-800 shadow-xl transition-all duration-1000 ease-in-out;
     }
@@ -114,14 +109,14 @@
     .sidebar ul li.active {
         @apply flex items-center space-x-4 text-teal-800;
     }
-    .container {
-        @apply px-4 md:px-24 min-w-full;
-    }
     .input {
         @apply bg-transparent border border-gray-300  focus:border-slate-800 outline-none  text-base text-slate-800 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }
     .search-box {
         @apply bg-transparent border-b border-gray-300 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
+    }
+    .search-indigo {
+        @apply bg-opacity-50 border-b border-gray-300 focus:border-b focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out;
     }
     .page-title {
         @apply flex flex-col justify-center items-center;
@@ -132,22 +127,12 @@
     .bread-crumb {
         @apply flex items-center space-x-1 text-sm;
     }
-    .bread-crumb a {
-        @apply text-blue-600;
-    }
-    .bread-crumb a::after {
-        content: "\203A";
-        font-size: 16px;
-    }
-    .chevron-right::after {
-        content: "\203A";
-    }
-    .link {
-        @apply text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4;
-    }
 
     .bi-pencil-square {
         @apply text-sm text-teal-600 hover:text-teal-800;
+    }
+    .bi-trash3 {
+        @apply text-sm text-red-600 hover:text-red-800;
     }
     .bi-x {
         @apply text-lg text-red-600 hover:text-red-800;
@@ -179,7 +164,7 @@
         @apply bg-sky-500 hover:bg-sky-800 duration-200 px-3 py-1 rounded text-slate-50;
     }
     .btn-teal {
-        @apply bg-teal-600 hover:bg-teal-800 duration-200 px-3 py-1 rounded text-slate-50;
+        @apply bg-teal-600 hover:bg-teal-800 duration-200 px-3 py-1 text-slate-50;
     }
     .btn-violet {
         @apply bg-violet-500 hover:bg-violet-800 duration-200 px-3 py-1 rounded text-slate-50;
@@ -238,7 +223,7 @@
         @apply flex flex-col mb-4;
     }
     .collapsible .head {
-        @apply flex items-center justify-between bg-slate-100 p-2 hover:cursor-pointer;
+        @apply flex items-center justify-between bg-white p-2 hover:cursor-pointer;
     }
     .collapsible .head h3 {
         @apply flex items-center text-slate-800 text-base font-bold;

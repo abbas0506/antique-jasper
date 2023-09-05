@@ -42,10 +42,10 @@ class SubcategoryController extends Controller
             'name' => 'required|unique:subcategories',
             'category_id' => 'required',
         ]);
-
+        $category = Category::find($request->category_id);
         try {
             Subcategory::create($request->all());
-            return redirect()->route('categories.index')->with('success', 'Successfully created');
+            return redirect()->route('admin.categories.show', $category)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -92,7 +92,7 @@ class SubcategoryController extends Controller
 
         try {
             $subcategory->update($request->all());
-            return redirect('categories')->with('success', 'Successfully updated');;
+            return redirect()->route('admin.categories.show', $subcategory->category)->with('success', 'Successfully updated');;
         } catch (Exception $ex) {
             return redirect()->back()->withErrors($ex->getMessage());
         }

@@ -74,7 +74,7 @@ class ProductController extends Controller
                 $product->save();
             }
 
-            return redirect()->route('subcategories.show', $request->subcategory_id)->with('success', 'Successfully created');
+            return redirect()->route('admin.subcategories.show', $request->subcategory_id)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -151,7 +151,7 @@ class ProductController extends Controller
 
             $product->save();
 
-            return redirect()->route('subcategories.show', $product->subcategory_id)->with('success', 'Successfully created');
+            return redirect()->route('admin.subcategories.show', $product->subcategory_id)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -178,7 +178,7 @@ class ProductController extends Controller
                 unlink($existing_image_url);
             }
             $product->delete();
-            return redirect()->route('subcategories.show', $subcategory)->with('success', 'Successfully deleted');
+            return redirect()->route('admin.subcategories.show', $subcategory)->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong

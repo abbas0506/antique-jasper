@@ -1,24 +1,25 @@
 @extends('layouts.admin')
 @section('page-content')
-<div class="container pt-24">
-    <h3>Config</h3>
+<div class="container">
+    <h4>New Product</h4>
     <div class="bread-crumb">
-        <a href="{{route('categories.index')}}">Categories </a>
-        {{$subcategory->name}} :: New Product
+        <a href="/">Home</a>
+        <div>/</div>
+        <a href="{{route('admin.categories.show',$subcategory->category)}}">{{$subcategory->category->name}}</a>
+        <div>/</div>
+        <a href="{{route('admin.subcategories.show',$subcategory)}}">{{$subcategory->name}}</a>
+        <div>/</div>
+        <div>New Product</div>
     </div>
 
-    @if ($errors->any())
-    <div class="alert-danger mt-8">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
     @endif
 
-    <h3 class="mt-8"><span class="chevron-right"> {{$subcategory->category->name}} </span> <span class="chevron-right"> {{$subcategory->name}} </span> New </h3>
-    <form action="{{route('products.store')}}" method='post' class="flex flex-col w-full mt-4" enctype="multipart/form-data" onsubmit="return validate(event)">
+    <form action="{{route('admin.products.store')}}" method='post' class="flex flex-col w-full mt-8" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         <div class="grid grid-cols-1 md:grid-cols-2 items-center">
 
