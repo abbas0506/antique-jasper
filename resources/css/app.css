@@ -77,9 +77,12 @@
         @apply text-blue-600 hover:text-blue-800 hover:underline hover:underline-offset-4;
     }
     .marquee {
-        @apply fixed top-0 left-0 w-full h-8 z-30 px-4 md:px-24 bg-slate-800 text-sm text-white flex items-center justify-between;
+        @apply fixed top-0 left-0 w-full h-6 z-30 px-4 md:px-24 bg-slate-800 text-xs text-white flex items-center justify-between;
     }
     .header {
+        @apply fixed top-6 left-0 w-full h-16 z-40 md:px-24 bg-transparent transition-all duration-500 ease-in-out;
+    }
+    .admin.header {
         @apply fixed top-0 left-0 w-full h-16 z-40 md:px-24 shadow bg-transparent transition-all duration-500 ease-in-out;
     }
     .header.scrolled {
