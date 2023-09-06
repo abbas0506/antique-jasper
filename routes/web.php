@@ -1,16 +1,16 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ConfigController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\Guest\ProductController as GuestProductController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Guest\ProductController;
 use App\Http\Controllers\QueryController;
-use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\web\ArticleController;
 use App\Http\Controllers\web\CartController;
 use App\Models\Product;
@@ -62,11 +62,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::resource('config', ConfigController::class)->only('index');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubcategoryController::class);
+    Route::resource('products', AdminProductController::class);
 
     Route::get('subcategories/add/{id}', [SubcategoryController::class, 'add']);
-    Route::get('products/add/{id}', [ProductController::class, 'add']);
+    Route::get('products/add/{id}', [AdminProductController::class, 'add']);
 
-    Route::resource('products', ProductController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('customers', CustomerController::class);
     Route::resource('couriers', CourierController::class);
@@ -78,9 +78,9 @@ Route::group(['middleware' => ['role:user']], function () {
 // 
 
 Route::group(['prefix' => 'guest', 'as' => 'guest.'], function () {
-    Route::resource('products', GuestProductController::class);
-    Route::get('products/filter/{type}/{val}', [GuestProductController::class, 'filter'])->name('products.filter');
-    Route::post('products/search', [GuestProductController::class, 'search'])->name('products.search');
+    Route::resource('products', ProductController::class);
+    Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
+    Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
 });
 Route::resource('articles', ArticleController::class);
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');

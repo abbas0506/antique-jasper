@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Exception;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +18,6 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -28,7 +28,6 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('admin.categories.create');
     }
 
     /**
@@ -41,12 +40,13 @@ class CategoryController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required|unique:categories',
+            'name' => 'required|unique:subcategories',
+            'category_id' => 'required',
         ]);
-
+        $category = Category::find($request->category_id);
         try {
-            Category::create($request->all());
-            return redirect()->route('admin.categories.index')->with('success', 'Successfully created');
+            Subcategory::create($request->all());
+            return redirect()->route('admin.categories.show', $category)->with('success', 'Successfully created');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
@@ -56,44 +56,44 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Subcategory $subcategory)
     {
         //
-        return view('admin.categories.show', compact('category'));
+        return view('admin.subcategories.show', compact('subcategory'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Subcategory $subcategory)
     {
         //
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.subcategories.edit', compact('subcategory'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\category  $category
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Subcategory $subcategory)
     {
         //
         $request->validate([
-            'name' => 'required|unique:categories,name,' . $category->id, 'id',
+            'name' => 'required|unique:subcategories,name,' . $subcategory->id, 'id',
         ]);
 
         try {
-            $category->update($request->all());
-            return redirect()->route('admin.categories.index')->with('success', 'Successfully updated');;
+            $subcategory->update($request->all());
+            return redirect()->route('admin.categories.show', $subcategory->category)->with('success', 'Successfully updated');;
         } catch (Exception $ex) {
             return redirect()->back()->withErrors($ex->getMessage());
         }
@@ -102,18 +102,24 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\category  $category
+     * @param  \App\Models\Subcategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Subcategory $subcategory)
     {
         //
         try {
-            $category->delete();
-            return redirect()->back()->with('success', 'Successfully deleted');
+            $subcategory->delete();
+            return redirect()->route('categories.index')->with('success', 'Successfully deleted');
         } catch (Exception $e) {
             return redirect()->back()->withErrors($e->getMessage());
             // something went wrong
         }
+    }
+    // associate new subcategory to parent category
+    public function add($id)
+    {
+        $category = Category::find($id);
+        return view('admin.subcategories.create', compact('category'));
     }
 }
