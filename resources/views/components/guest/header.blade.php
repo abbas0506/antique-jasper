@@ -36,7 +36,7 @@
     </div>
 </header>
 <div id='searchBar' class="fixed z-30 top-40  hidden w-full">
-    <form action="{{route('guest.products.search')}}" method="post">
+    <form action="{{url('search')}}" method="post">
         @csrf
         <div class="w-3/4 mx-auto relative">
             <input type="text" name='searchby' class="custom-input p-2 w-full" placeholder="I need ...">

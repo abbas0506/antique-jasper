@@ -27,7 +27,7 @@ $url=asset('images/ring.png');
             <!-- item  -->
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="{{route('guest.products.filter',['G','F'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('products.filter',['G','F'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>
@@ -39,7 +39,7 @@ $url=asset('images/ring.png');
             </div>
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="{{route('guest.products.filter',['G','M'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('products.filter',['G','M'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>
@@ -74,11 +74,7 @@ $url=asset('images/ring.png');
             <nav id='product-nav'>
                 <ul>
                     <li class="active">All Products</li>
-                    <li>Women</li>
-                    <li>Men</li>
-                    <li>Jewellery</li>
-                    <li>Stone</li>
-                    <li>Custom Articles</li>
+
                 </ul>
             </nav>
             <div class="flex flex-wrap space-x-4">
@@ -86,16 +82,14 @@ $url=asset('images/ring.png');
                     <i class="bi bi-filter mr-2"></i>
                     <p>Filter</p>
                 </div>
-                <div class="flex justify-center items-center px-4 py-2 border rounded-sm hover:bg-indigo-500 hover:text-white">
-                    <i class="bi bi-search mr-2"></i>
-                    <p>Search</p>
-                </div>
             </div>
         </div>
         <!-- product listing -->
         <div class="mt-16">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-                @foreach($products as $product)
+
+                @foreach($subcategories as $subcategory)
+                @foreach($subcategory->products->take(2) as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;
                 @endphp
@@ -124,6 +118,7 @@ $url=asset('images/ring.png');
                     </a>
                 </div>
 
+                @endforeach
                 @endforeach
 
             </div>

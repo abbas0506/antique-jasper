@@ -11,9 +11,11 @@ use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Guest\ProductController;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\web\ArticleController;
 use App\Http\Controllers\web\CartController;
 use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,19 +36,12 @@ Route::get('/', function () {
             return redirect('admin');
     } else {
         $products = Product::all();
-        return redirect()->route('guest.products.index');
+        $subcategories = Subcategory::with('products')->has('products')->get();
+        // return redirect()->route('products.index');
+        return view('index', compact('subcategories'));
     }
 });
-
 Route::view('login', 'login');
-
-// Route::get('/{url}', function () {
-//     if (Auth::check())
-//         return redirect('admin');
-//     else
-//         return redirect('/');
-// })->where('url', "login|signin");
-
 Route::view('policy', 'policy');
 Route::view('about', 'about');
 Route::view('contact', 'contact');
@@ -75,13 +70,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
 Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
-// 
 
-Route::group(['prefix' => 'guest', 'as' => 'guest.'], function () {
-    Route::resource('products', ProductController::class);
-    Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
-    Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
-});
+Route::resource('products', ProductController::class);
+Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
+// Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
+Route::post('search', [SearchController::class, 'search']);
 Route::resource('articles', ArticleController::class);
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
