@@ -9,8 +9,9 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $products = Product::where('name', 'like', '%' . $request->searchby . '%')->get();
+        $searchby = $request->searchby;
+        $products = Product::where('name', 'like', '%' . $searchby . '%')->get();
 
-        return view('search', compact('products'));
+        return view('search', compact('products', 'searchby'));
     }
 }
