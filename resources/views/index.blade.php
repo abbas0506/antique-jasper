@@ -108,7 +108,7 @@ $url=asset('images/ring.png');
                     $reducedName=$subcategory->name;
                     @endphp
 
-                    <div class="absolute top-6 left-6">
+                    <div class="absolute top-2 left-2">
                         <h5>{{$reducedName}}</h5>
                         <!-- <h3 class="text-sm text-slate-600">Spring 2023</h3> -->
                     </div>
