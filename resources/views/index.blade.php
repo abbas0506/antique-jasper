@@ -119,11 +119,6 @@ $url=asset('images/ring.png');
                 @endforeach
 
             </div>
-
-        </div>
-
-        <div class="flex justify-center items-center mt-16 ">
-            <button class="flex justify-center items-center rounded-full px-6 py-2 border-[1px] hover:bg-black hover:text-slate-300">Load More</button>
         </div>
     </div>
 </section>

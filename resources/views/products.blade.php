@@ -19,7 +19,7 @@ $url=asset('images/ring.png');
 <!-- Overview section -->
 <section class="mt-60">
     <div class="container">
-        <h1 class="text-3xl font-semibold">In stock products of "{{$subcategory->name}}"</h1>
+        <h1 class="text-3xl font-semibold">Available roducts of "{{$subcategory->name}}"</h1>
         <!-- product listing -->
         <div class="mt-16">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
@@ -56,9 +56,6 @@ $url=asset('images/ring.png');
 
         </div>
 
-        <div class="flex justify-center items-center mt-16 ">
-            <button class="flex justify-center items-center rounded-full px-6 py-2 border-[1px] hover:bg-black hover:text-slate-300">Load More</button>
-        </div>
     </div>
 </section>
 @endsection
