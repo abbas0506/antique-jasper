@@ -1,25 +1,9 @@
 @extends('layouts.guest')
-
 @section('body')
-<!-- hero section -->
-@php
-$url=asset('images/ring.png');
-@endphp
-
-<!-- <section class="h-screen bg-orange-50 bg-right-bottom bg-no-repeat" style="background-image: url('{{$url}}');">
-    <div class="flex w-full md:w-1/2 h-full items-center">
-        <div class="pl-4 md:pl-24 mt-16">
-            <h1 class="text-center md:text-left">ANTIQUE JASPER</h1>
-            <p class="text-xl mt-6">We have a unique collection of 1000+ items for you with reasonable price. We believe in our prolonged customer relations. Feel free to place your order; shipment is free on the order of two or more items.</p>
-        </div>
-
-    </div>
-</section> -->
-
 <!-- Overview section -->
-<section class="mt-60">
+<section class="mt-32 mb-16">
     <div class="container">
-        <h1 class="text-3xl font-semibold">Available Products of "{{$subcategory->name}}"</h1>
+        <h1 class="text-center text-xl font-semibold">Available Products of "{{$subcategory->name}}"</h1>
         <!-- product listing -->
         <div class="mt-16">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
@@ -56,6 +40,11 @@ $url=asset('images/ring.png');
 
         </div>
 
+        <div class="mt-16">
+            <h1 class="text-center text-xl font-semibold">You would also like to buy</h1>
+        </div>
+
     </div>
 </section>
+
 @endsection
