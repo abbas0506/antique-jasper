@@ -94,7 +94,7 @@ $url=asset('images/ring.png');
                 $url=asset('images/products')."/".$product->image;
                 @endphp
 
-                <div class="relative border h-32 sm:h-48">
+                <div class="relative border h-32 sm:h-48 w-32 sm:w-48">
                     <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
                         <a href="{{route('subcategories.show',$subcategory)}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                             <i class="bi bi-cart2"></i>
