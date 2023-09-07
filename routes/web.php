@@ -71,10 +71,14 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
 
+Route::resource('subcategories', SubcategoryController::class);
+
+
 Route::resource('products', ProductController::class);
 Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
 // Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
 Route::post('search', [SearchController::class, 'search']);
 Route::resource('articles', ArticleController::class);
+
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');

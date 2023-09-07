@@ -89,30 +89,33 @@ $url=asset('images/ring.png');
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
 
                 @foreach($subcategories as $subcategory)
-                @foreach($subcategory->products->take(1) as $product)
+                @foreach($subcategory->products->take(2) as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;
                 @endphp
+                <div class="product-card">
+                    <a href="{{route('articles.show',$product)}}">
+                        <div class="img-container">
+                            <div class="bg-img-hover-scale" style="background-image: url('{{asset($url)}}');"></div>
+                            <div class="cart-icon">
+                                <a href="{{route('cart.add', $product->id)}}">
+                                    <i class="bi bi-cart2"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-desc p-2">
 
-                <div class="relative border h-32 sm:h-48">
-                    <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                        <a href="{{route('subcategories.show',$subcategory)}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
-                            <i class="bi bi-cart2"></i>
-                        </a>
-                    </div>
+                            @php
+                            if(strlen($product->name)>30)
+                            $reducedName=substr($product->name,0,30)."...";
+                            else
+                            $reducedName=$product->name;
+                            @endphp
 
-                    @php
-                    if(strlen($subcategory->name)>30)
-                    $reducedName=substr($subcategory->name,0,30)."...";
-                    else
-                    $reducedName=$subcategory->name;
-                    @endphp
-
-                    <div class="absolute top-6 left-6">
-                        <h5>{{$reducedName}}</h5>
-                        <!-- <h3 class="text-sm text-slate-600">Spring 2023</h3> -->
-                    </div>
-                    <img src="{{$url}}" alt="img">
+                            <p class="text-xs md:text-sm text-slate-900">{{$reducedName}} </p>
+                            <p class="mt-1 text-xs  text-slate-600">AJ#{{$product->code}} &nbsp PKR {{$product->price}}</p>
+                        </div>
+                    </a>
                 </div>
 
                 @endforeach
