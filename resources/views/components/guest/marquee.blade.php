@@ -1,6 +1,6 @@
 <div class="marquee">
     <div class="w-1/2">
-        <marquee behavior="" direction="">Enjoy free shipping on the order of two or more items</marquee>
+        <marquee behavior="" direction="">Enjoy free shipping on the order of more than one item</marquee>
     </div>
     <div class="flex w-1/2 items-center justify-end space-x-2">
         <a href="https://wa.me/+923044933477" target="_blank" class="flex items-center">
