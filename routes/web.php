@@ -4,7 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\SubcategoryController as AdminSubcategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CourierController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Guest\ProductController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\web\ArticleController;
 use App\Http\Controllers\web\CartController;
 use App\Models\Product;
@@ -56,10 +57,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::get('/', [AdminController::class, 'index']);
     Route::resource('config', ConfigController::class)->only('index');
     Route::resource('categories', CategoryController::class);
-    Route::resource('subcategories', SubcategoryController::class);
+    Route::resource('subcategories', AdminSubcategoryController::class);
     Route::resource('products', AdminProductController::class);
 
-    Route::get('subcategories/add/{id}', [SubcategoryController::class, 'add']);
+    Route::get('subcategories/add/{id}', [AdminSubcategoryController::class, 'add']);
     Route::get('products/add/{id}', [AdminProductController::class, 'add']);
 
     Route::resource('countries', CountryController::class);
