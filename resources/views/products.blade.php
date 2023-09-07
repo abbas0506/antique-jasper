@@ -19,7 +19,7 @@ $url=asset('images/ring.png');
 <!-- Overview section -->
 <section class="mt-60">
     <div class="container">
-        <h1 class="text-3xl font-semibold">Available roducts of "{{$subcategory->name}}"</h1>
+        <h1 class="text-3xl font-semibold">Available Products of "{{$subcategory->name}}"</h1>
         <!-- product listing -->
         <div class="mt-16">
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
