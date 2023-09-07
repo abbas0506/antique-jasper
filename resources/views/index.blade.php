@@ -112,7 +112,7 @@ $url=asset('images/ring.png');
                         <h5>{{$reducedName}}</h5>
                         <!-- <h3 class="text-sm text-slate-600">Spring 2023</h3> -->
                     </div>
-                    <img src="{{$url}}" alt="img">
+                    <img src="{{$url}}" alt="img" class="w-full h-full">
                 </div>
 
                 @endforeach
