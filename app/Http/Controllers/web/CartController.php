@@ -35,13 +35,13 @@ class CartController extends Controller
                 ]
             ];
             session()->put('cart', $cart);
-            return redirect('/')->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // if cart not empty then check if this product exist then increment qty
         if (isset($cart[$id])) {
             $cart[$id]['qty']++;
             session()->put('cart', $cart);
-            return redirect('/')->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // if item not exist in cart then add to cart with qty = 1
         $cart[$id] = [
@@ -53,7 +53,7 @@ class CartController extends Controller
         ];
         session()->put('cart', $cart);
         // return redirect()->back()->with('success', 'Product added to cart successfully!');
-        return redirect('/')->with(['success' => $id . 'Successfully added to cart']);
+        return redirect()->back()->with(['success' => $id . 'Successfully added to cart']);
     }
 
     /**
@@ -76,8 +76,15 @@ class CartController extends Controller
     }
 
 
-    public function updateQty($id)
+    public function updateQty(Request $request)
     {
         //
+        if ($request->id && $request->quantity) {
+            $cart = session()->get('cart');
+            $cart[$request->id]["qty"]++;
+            session()->put('cart', $cart);
+            // session()->flash();
+            return response()->json(['success' => 'Cart updated successfully']);
+        }
     }
 }

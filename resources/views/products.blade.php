@@ -41,7 +41,7 @@
         </div>
 
         <div class="mt-16">
-            <h1 class="text-center text-xl font-semibold">You would also like to buy</h1>
+            <h1 class="text-center text-xl font-semibold">You may also like</h1>
         </div>
 
     </div>

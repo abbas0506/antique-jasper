@@ -83,3 +83,4 @@ Route::resource('articles', ArticleController::class);
 
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
+Route::patch('update-cart', [CartController::class, 'updateQty'])->name('update.cart');
