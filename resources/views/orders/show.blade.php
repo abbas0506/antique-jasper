@@ -5,15 +5,6 @@
 <div class="container pt-32 min-h-[98vh]">
     <h3 class="mt-4 text-center tracking-widest">Order # {{ $order->tracking_id }}</h3>
     <div class="border-y flex flex-col justify-center items-center p-4 mt-4">
-        @php
-
-        $total=0;
-        if(session('cart')){
-        foreach(session('cart') as $id => $details)
-        $total += $details['price'] * $details['qty'];
-        }
-        @endphp
-
         <label>Total Amount</label>
         <h4>Rs. {{ $order->amount() }}</h4>
         <div class="text-xs mt-2">*Amount is recieved through JazzCash</div>
@@ -58,7 +49,7 @@
                     <span class="quantity px-2">{{$orderDetail->qty}}</span>
                     <i class="bi-plus incQty px-1 bg-slate-200 hover:cursor-pointer"></i>
                 </td>
-                <td>{{$orderDetail->qty*$orderDetail->product->price}}</td>
+                <td>{{ $orderDetail->qty*$orderDetail->product->price }}</td>
             </tr>
             @endforeach
             <!-- cart footer -->
