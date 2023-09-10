@@ -12,7 +12,7 @@
                 $url=asset('images/products')."/".$product->image;
                 @endphp
                 <div class="product-card">
-                    <a href="{{route('articles.show',$product)}}">
+                    <a href="{{route('products.show',$product)}}">
                         <div class="img-container">
                             <div class="bg-img-hover-scale" style="background-image: url('{{asset($url)}}');"></div>
                             <div class="cart-icon">

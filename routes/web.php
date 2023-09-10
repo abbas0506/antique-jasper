@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\Guest\ProductController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubcategoryController;
@@ -63,24 +65,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::get('subcategories/add/{id}', [AdminSubcategoryController::class, 'add']);
     Route::get('products/add/{id}', [AdminProductController::class, 'add']);
 
-    Route::resource('countries', CountryController::class);
-    Route::resource('customers', CustomerController::class);
-    Route::resource('couriers', CourierController::class);
-    Route::resource('queries', QueryController::class);
+    // Route::resource('countries', CountryController::class);
+    // Route::resource('customers', CustomerController::class);
+    // Route::resource('couriers', CourierController::class);
+    // Route::resource('queries', QueryController::class);
 });
 Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
 
 Route::resource('subcategories', SubcategoryController::class);
-
-
 Route::resource('products', ProductController::class);
 Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
 // Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
 Route::post('search', [SearchController::class, 'search']);
-Route::resource('articles', ArticleController::class);
+// Route::resource('articles', ArticleController::class);
 
 Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
-Route::patch('update-cart', [CartController::class, 'updateQty'])->name('update.cart');
+Route::patch('cart/update', [CartController::class, 'updateQty'])->name('cart.update');
+Route::get('cart/checkout', [CartController::class, 'checkout']);
+Route::resource('orders', OrderController::class);
+Route::post('orders/track', [OrderController::class, 'track']);
+Route::get('payment', [OrderController::class, 'payment']);
+Route::patch('order/details/update', [OrderDetailController::class, 'update']);

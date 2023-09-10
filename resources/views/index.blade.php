@@ -98,17 +98,12 @@ $url=asset('images/ring.png');
                     <a href="{{route('subcategories.show',$subcategory)}}">
                         <div class="img-container">
                             <div class="bg-img-hover-scale" style="background-image: url('{{asset($url)}}');"></div>
-                            <div class="cart-icon">
-                                <a href="{{route('cart.add', $product->id)}}">
-                                    <i class="bi bi-cart2"></i>
-                                </a>
-                            </div>
                         </div>
                         <div class="product-desc p-2">
 
                             @php
-                            if(strlen($subcategory->name)>30)
-                            $reducedName=substr($subcategory->name,0,30)."...";
+                            if(strlen($subcategory->name)>20)
+                            $reducedName=substr($subcategory->name,0,20)."...";
                             else
                             $reducedName=$subcategory->name;
                             @endphp
