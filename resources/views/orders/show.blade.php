@@ -62,9 +62,7 @@
             </tr>
             @endforeach
             <!-- cart footer -->
-            <tr class="border-t">
-
-
+            <tr class="border-t font-semibold">
                 <td colspan="4"></td>
                 <td>Grand Total:</td>
                 <td>Rs. {{ $order->amount() }} /-</td>

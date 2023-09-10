@@ -4,11 +4,10 @@
 <x-guest.marquee></x-guest.marquee>
 <div class="container pt-32 min-h-[98vh]">
     <h3 class="mt-4 text-center tracking-widest">PAY NOW</h3>
-    <div class="flex items-center justify-center space-x-4 text-sm">
-        <div class="text-center">Tracking ID: {{ $order->tracking_id }}</div>
-        <a href="{{url('cart/show')}}" class="tracking-wider text-xs link">VIEW CART</a>
+    <div class="flex items-center justify-center space-x-2">
+        <div class="text-center">Order #: </div>
+        <a href="{{route('orders.show', $order)}}" class="tracking-wider link">{{ $order->tracking_id }}</a>
     </div>
-
     <div class="border-y flex flex-col justify-center items-center p-4 mt-4">
         @php
 

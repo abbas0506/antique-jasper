@@ -123,7 +123,6 @@ class OrderController extends Controller
     {
         if (session('tracking_id')) {
             $order = Order::where('tracking_id', session('tracking_id'))->first();
-            $order = Order::where('tracking_id', 507690)->first();
             return view('orders.payment', compact('order'));
         } else {
             return view('orders.tracking');
