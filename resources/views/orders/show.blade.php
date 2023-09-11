@@ -61,7 +61,9 @@
 
         </tbody>
     </table>
-
+    <div class="flex justify-center mt-6">
+        <a href="{{route('orders.payment',$order)}}" class="btn-teal tracking-wider">PAY NOW</a>
+    </div>
 </div>
 
 @endsection

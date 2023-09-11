@@ -7,6 +7,7 @@ use App\Models\OrderDetail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class OrderController extends Controller
 {
@@ -64,9 +65,9 @@ class OrderController extends Controller
                     ]);
                 }
             }
-
+            session()->forget('cart');
             DB::commit();
-            return redirect('payment')->with('tracking_id', $tracking_id);;
+            return redirect()->route('orders.payment', $order->id)->with('success', 'Shipping information successfully saved');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors($e->getMessage());
@@ -107,6 +108,42 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //
+        $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+        ]);
+
+        try {
+            $image_name = '';
+
+            //if user has changed image, replace existing image 
+            if ($request->hasFile('image')) {
+                $existing_image_url = public_path('images/payment/receipt/') . $order->image;
+
+                //remove existing image
+                if (File::exists($existing_image_url)) {
+                    File::delete($existing_image_url);
+                }
+
+                //save uploaded image
+                $image_name = $order->id . '.' . $request->image->extension();
+                $request->file('image')->move(public_path('images/payment/receipt/'), $image_name);
+            }
+
+            //update by raw input as it is
+            $order->update($request->all());
+
+            //if image has been changed by user
+            //replace uploaded image name by its formatted name
+            if ($image_name != '')
+                $order->image = $image_name;
+
+            $order->save();
+
+            return redirect()->route('orders.thanks', $order->id)->with('success', 'Successfully uploaded');
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors($e->getMessage());
+            // something went wrong
+        }
     }
 
     /**
@@ -119,14 +156,11 @@ class OrderController extends Controller
     {
         //
     }
-    public function payment()
+    public function payment(Request $request, $id)
     {
-        if (session('tracking_id')) {
-            $order = Order::where('tracking_id', session('tracking_id'))->first();
-            return view('orders.payment', compact('order'));
-        } else {
-            return view('orders.tracking');
-        }
+
+        $order = Order::find($id);
+        return view('orders.payment', compact('order'));
     }
     public function track(Request $request)
     {
@@ -149,5 +183,15 @@ class OrderController extends Controller
                 'msg' => $ex->getMessage(),
             ]);
         }
+    }
+    public function thanks(Request $request, $id)
+    {
+        $order = Order::find($id);
+        return view('orders.thanks', compact('order'));
+    }
+    public function paylater(Request $request, $id)
+    {
+        $order = Order::find($id);
+        return view('orders.paylater', compact('order'));
     }
 }

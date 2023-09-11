@@ -15,6 +15,7 @@ class Order extends Model
         'address',
         'city',
         'phone',
+        'image',
         'courier',
         'shipped_at',
         'shipment_note',

@@ -12,11 +12,15 @@
                         <a href="{{url('policy')}}">Policy</a>
                     </li>
                     <li>
+                        <a href="{{url('tracking')}}">Tracking</a>
+                    </li>
+                    <li>
                         <a href="{{url('about')}}">About</a>
                     </li>
                     <li>
                         <a href="{{url('contact')}}">Contact</a>
                     </li>
+
                 </ul>
             </nav>
         </div>

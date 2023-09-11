@@ -9,17 +9,8 @@
         <a href="{{route('orders.show', $order)}}" class="tracking-wider link">{{ $order->tracking_id }}</a>
     </div>
     <div class="border-y flex flex-col justify-center items-center p-4 mt-4">
-        @php
-
-        $total=0;
-        if(session('cart')){
-        foreach(session('cart') as $id => $details)
-        $total += $details['price'] * $details['qty'];
-        }
-        @endphp
-
         <label>Total Amount</label>
-        <h4>Rs. {{ $total }}</h4>
+        <h4>Rs. {{ $order->amount() }}</h4>
         <div class="text-xs mt-2">*Amount is recieved through JazzCash</div>
 
     </div>
@@ -27,8 +18,6 @@
     <!-- page message -->
     @if($errors->any())
     <x-message :errors='$errors'></x-message>
-    @else
-    <x-message></x-message>
     @endif
 
     <form action="{{route('orders.update', $order)}}" method="post" enctype="multipart/form-data" onsubmit="return validate(event)">
@@ -52,7 +41,8 @@
 
             </div>
         </div>
-        <div class="flex justify-center my-8">
+        <div class="flex justify-center items-center space-x-4 my-8">
+            <a href="{{route('orders.paylater',$order)}}" class="btn-orange rounded-none">I Shall Pay Later</a>
             <button class="btn-teal">Upload Now</button>
         </div>
     </form>

@@ -3,17 +3,25 @@
 @section('body')
 <x-guest.marquee></x-guest.marquee>
 <div class="container pt-32 min-h-[98vh]">
+
     <h3 class="mt-4 text-center tracking-widest">Track Your Order</h3>
     <div>
 
-        <label for="">Tracking ID</label>
+        <label for="">Order #</label>
         <input type="text" id='tracking_id' class="custom-input" placeholder="- - - - - -">
     </div>
+
+    <!-- page message -->
+    @if($errors->any())
+    <x-message :errors='$errors'></x-message>
+    @else
+    <x-message></x-message>
+    @endif
 
     <table class="table-auto w-full mt-8">
         <thead>
             <tr>
-                <th>Track ID</th>
+                <th>Order #</th>
                 <th class="w-96 text-left">Buyer Name</th>
                 <th>Amount</th>
                 <th>Status</th>
