@@ -21,15 +21,15 @@ class Order extends Model
         'shipment_note',
     ];
 
-    public function orderDetails()
+    public function order_details()
     {
         return $this->hasMany(OrderDetail::class);
     }
     public function amount()
     {
         $amount = 0;
-        foreach ($this->orderDetails as $orderDetail) {
-            $amount += ($orderDetail->qty * $orderDetail->product->price);
+        foreach ($this->order_details as $order_detail) {
+            $amount += ($order_detail->qty * $order_detail->product->price);
         }
         return $amount;
     }
@@ -45,11 +45,11 @@ class Order extends Model
         }
     }
 
-    public function receipt_uploaded($query)
+    public function scopeReceiptUploaded($query)
     {
         return $query->whereNotNull('image');
     }
-    public function payment_verified($query)
+    public function scopePaymentVerified($query)
     {
         return $query->where('payment_verified', true);
     }
@@ -57,7 +57,7 @@ class Order extends Model
     {
         return $query->where('payment_verified', false);
     }
-    public function pending($query)
+    public function scopePending($query)
     {
         return $query->whereNull('shipped_at');
     }

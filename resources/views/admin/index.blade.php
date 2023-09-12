@@ -43,7 +43,7 @@
 
         </a>
     </div>
-    <div class="col-span-2 shadow-lg p-5">
+    <div class="col-span-2 bg-white p-4 mt-4">
         <div class="py-3 border-b border-gray-200 text-green-800 font-bold">
             Current Orders
         </div>
@@ -51,23 +51,40 @@
             <thead>
                 <tr class="border-b border-slate-200">
                     <th>Order ID</th>
-                    <th>Product Name</th>
-                    <th>Qty</th>
-                    <th>Unit Price</th>
-                    <th>Total</th>
+                    <th>Customer</th>
+                    <th>Products</th>
+                    <th>Price</th>
+                    <th>Receipt</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @for($i=0; $i<18;$i++) <tr class="tr border-b">
-                    <td>Order ID</td>
-                    <td>Product Name</td>
-                    <td>Qty</td>
-                    <td>Unit Price</td>
-                    <td>Total</td>
-                    <td>Status</td>
-                    </tr>
-                    @endfor
+                @foreach($orders->whereNull('shipped_at') as $order) <tr class="tr border-b">
+                    <td>{{$order->tracking_id}}</td>
+                    <td>{{ $order->first_name }} {{ $order->last_name }}</td>
+                    <td>{{ $order->order_details->count() }}</td>
+                    <td> {{ $order->amount() }}</td>
+                    <td>
+                        <div class="flex justify-center">
+                            @if($order->image=='')
+                            <img src="{{asset('images/no-image.png')}}" alt="" id='preview_img' class="w-8 h-8">
+                            @else
+                            @php
+                            $url=asset('images/payment/receipt')."/". $order->image;
+                            @endphp
+                            <img src="{{$url}}" alt="img" id='preview_img' class="w-12 h-12 rounded-md">
+                            @endif
+                        </div>
+                    </td>
+                    <td>{{ $order->status() }}</td>
+                    <td>
+                        <a href="{{route('admin.orders.show',$order)}}">
+                            <i class="bi-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

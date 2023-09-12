@@ -34,28 +34,28 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($order->orderDetails as $orderDetail)
+                @foreach($order->order_details as $order_detail)
                 @php
-                $url = asset('images/products') . "/" . $orderDetail->product->image;
+                $url = asset('images/products') . "/" . $order_detail->product->image;
                 @endphp
 
-                <tr data-id="{{ $orderDetail->id }}">
+                <tr data-id="{{ $order_detail->id }}">
                     <td>
                         <div class="flex justify-center">
                             <img src="{{$url}}" class="w-12">
                         </div>
                     </td>
-                    <td>{{$orderDetail->product->code}}</td>
-                    <td class="text-left">{{$orderDetail->product->name}}</td>
-                    <td>{{$orderDetail->product->price}}</td>
+                    <td>{{$order_detail->product->code}}</td>
+                    <td class="text-left">{{$order_detail->product->name}}</td>
+                    <td>{{$order_detail->product->price}}</td>
                     <td>
                         <div class="flex flex-nowrap justify-center items-center">
                             <i class="bi-dash decQty px-1 bg-slate-200 hover:cursor-pointer"></i>
-                            <span class="quantity px-2">{{$orderDetail->qty}}</span>
+                            <span class="quantity px-2">{{$order_detail->qty}}</span>
                             <i class="bi-plus incQty px-1 bg-slate-200 hover:cursor-pointer"></i>
                         </div>
                     </td>
-                    <td>{{ $orderDetail->qty*$orderDetail->product->price }}</td>
+                    <td>{{ $order_detail->qty*$order_detail->product->price }}</td>
                 </tr>
                 @endforeach
                 <!-- cart footer -->

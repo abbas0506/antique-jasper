@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ConfigController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\SubcategoryController as AdminSubcategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CountryController;
@@ -61,6 +62,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', AdminSubcategoryController::class);
     Route::resource('products', AdminProductController::class);
+    Route::resource('orders', AdminOrderController::class);
 
     Route::get('subcategories/add/{id}', [AdminSubcategoryController::class, 'add']);
     Route::get('products/add/{id}', [AdminProductController::class, 'add']);
