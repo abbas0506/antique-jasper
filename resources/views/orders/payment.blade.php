@@ -18,17 +18,6 @@
     @if($errors->any())
     <x-message :errors='$errors'></x-message>
     @endif
-    <div class="flex justify-center items-center space-x-2 font-semibold mt-4">
-        <h4 class="text-sm">Status:</h4>
-        <div class="bg-green-200 px-3 rounded-full text-sm">@if($order->status()==0)
-            <div class="rounded-full">Not paid</div>
-            @elseif($order->status()==1)
-            <div class="rounded-full">Shipping pending</div>
-            @else
-            <div class="rounded-full">Has been shipped</div>
-            @endif
-        </div>
-    </div>
     <form action="{{route('orders.update', $order)}}" method="post" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         @method('PATCH')

@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('name', 50);
             $table->unsignedInteger('price');
             $table->unsignedInteger('color')->nullable();
-            $table->string('gender', 1)->nullable();
+            $table->string('gender')->default('M')->nullable();
+            $table->boolean('is_customized')->default(false);
+            $table->string('description', 200)->nullable();
             $table->string('image');
-
             $table->unsignedInteger('rating')->default(0);
-
             $table->unsignedBigInteger('subcategory_id');
 
             $table->foreign('subcategory_id')

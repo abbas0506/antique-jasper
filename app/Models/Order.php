@@ -15,8 +15,8 @@ class Order extends Model
         'address',
         'city',
         'phone',
-        'image',
-        'courier',
+        'image', //receipt image
+        'payment_verified',
         'shipped_at',
         'shipment_note',
     ];
@@ -36,12 +36,33 @@ class Order extends Model
     public function status()
     {
         if ($this->image == null) {
-            return 0; //not paid
+            return 'Not Paid'; //not paid
         } else {
             if ($this->shipped_at == null)
-                return 1; //paid, but not shipped
+                return "Waiting for shipment"; //paid, but not shipped
             else
-                return 2; //shipped
+                return "shipped"; //shipped
         }
+    }
+
+    public function receipt_uploaded($query)
+    {
+        return $query->whereNotNull('image');
+    }
+    public function payment_verified($query)
+    {
+        return $query->where('payment_verified', true);
+    }
+    public function payment_not_verified($query)
+    {
+        return $query->where('payment_verified', false);
+    }
+    public function pending($query)
+    {
+        return $query->whereNull('shipped_at');
+    }
+    public function shipped($query)
+    {
+        return $query->whereNotNull('shipped_at');
     }
 }

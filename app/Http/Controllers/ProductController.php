@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ProductController extends Controller
 {
@@ -87,7 +88,11 @@ class ProductController extends Controller
     }
     public function filter($id)
     {
-        $products = Product::where('gender', $id)->get();
+        if (in_array($id, array('M', 'F')))
+            $products = Product::where('gender', $id)->get();
+        else
+            $products = Product::where('is_customized', true)->get();
+
         $subcategories = Subcategory::all();
         return view('featured', compact('products', 'subcategories'));
     }

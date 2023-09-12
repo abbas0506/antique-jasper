@@ -15,7 +15,7 @@
                 <i class="bi bi-clock text-xl"></i>
             </div>
             <div class="flex flex-col">
-                <h3>Recent Orders</h3>
+                <h3>Pending Orders</h3>
                 <p>125</p>
             </div>
 

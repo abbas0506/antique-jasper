@@ -17,7 +17,10 @@
     @else
     <x-message></x-message>
     @endif
-
+    <div class="flex justify-center items-center space-x-2 font-semibold mt-4">
+        <h4 class="text-sm">Status:</h4>
+        <div class="bg-green-200 px-3 rounded-full text-sm">{{$order->status()}}</div>
+    </div>
     <div class="w-full overflow-x-auto mt-4">
         <table class="table-fixed w-full">
             <thead>
