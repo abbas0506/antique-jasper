@@ -48,7 +48,8 @@ class SubcategoryController extends Controller
     {
         //
         $subcategory = Subcategory::find($id);
-        return view('products', compact('subcategory'));
+        $likeableSubcategories = Subcategory::where('id', '<>', $id)->get();
+        return view('products', compact('subcategory', 'likeableSubcategories'));
     }
 
     /**

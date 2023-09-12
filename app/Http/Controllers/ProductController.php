@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -83,5 +84,11 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function filter($id)
+    {
+        $products = Product::where('gender', $id)->get();
+        $subcategories = Subcategory::all();
+        return view('featured', compact('products', 'subcategories'));
     }
 }

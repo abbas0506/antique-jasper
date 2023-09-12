@@ -3,7 +3,7 @@
 <!-- Overview section -->
 <section class="mt-32 mb-16">
     <div class="container">
-        <h1 class="text-center text-xl font-semibold">Available Products of "{{$subcategory->name}}"</h1>
+        <h1 class="text-center text-xl font-semibold">Available Products of Selected Category</h1>
         <!-- product listing -->
         <div class="mt-16">
             @if($errors->any())
@@ -12,7 +12,7 @@
             <x-message></x-message>
             @endif
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-4">
-                @foreach($subcategory->products as $product)
+                @foreach($products as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;
                 @endphp
@@ -49,7 +49,7 @@
             <h1 class="text-center text-xl font-semibold">You may also like</h1>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-8">
 
-                @foreach($likeableSubcategories as $subcategory)
+                @foreach($subcategories as $subcategory)
                 @foreach($subcategory->products->take(1) as $product)
                 @php
                 $url=asset('images/products')."/".$product->image;

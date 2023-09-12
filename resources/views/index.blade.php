@@ -27,7 +27,7 @@ $url=asset('images/ring.png');
             <!-- item  -->
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="{{route('products.filter',['G','F'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('products.filter','F')}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>
@@ -35,11 +35,11 @@ $url=asset('images/ring.png');
                     <h2 class="text-xl font-semibold">Women</h2>
                     <h3 class="text-sm text-slate-600">Spring 2023</h3>
                 </div>
-                <img src="{{asset('images/woman.png')}}" alt="">
+                <img src="{{asset('images/girl.png')}}" alt="">
             </div>
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="{{route('products.filter',['G','M'])}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('products.filter','M')}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>
@@ -51,7 +51,7 @@ $url=asset('images/ring.png');
             </div>
             <div class="relative border">
                 <div class="absolute left-0 top-0  flex justify-center items-center w-full h-full opacity-0 hover:opacity-80 bg-gray-400 z-20">
-                    <a href="" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
+                    <a href="{{route('products.filter','C')}}" class="flex justify-center items-center w-16 h-16 rounded-full bg-white border-red-400">
                         <i class="bi bi-cart2"></i>
                     </a>
                 </div>

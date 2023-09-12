@@ -33,4 +33,15 @@ class Order extends Model
         }
         return $amount;
     }
+    public function status()
+    {
+        if ($this->image == null) {
+            return 0; //not paid
+        } else {
+            if ($this->shipped_at == null)
+                return 1; //paid, but not shipped
+            else
+                return 2; //shipped
+        }
+    }
 }

@@ -15,30 +15,30 @@
             <h5 class="mt-8">Shipping Address</h5>
             <form action="{{route('orders.store')}}" method="post">
                 @csrf
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 mt-8">
-                    <div class="flex flex-col">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 mt-8">
+                    <div class="">
                         <label for="">First Name</label>
                         <input type="text" name='first_name' class="custom-input">
                     </div>
-                    <div class="flex flex-col">
+                    <div class="">
                         <label for="">Last Name</label>
                         <input type="text" name='last_name' class="custom-input">
                     </div>
-                    <div class="flex flex-col col-span-2">
+                    <div class="sm:col-span-2">
                         <label for="">Address</label>
                         <input type="text" name='address' class="custom-input">
                     </div>
-                    <div class="flex flex-col">
+                    <div class="">
                         <label for="">City</label>
                         <input type="text" name='city' class="custom-input">
                     </div>
-                    <div class="flex flex-col">
+                    <div class="">
                         <label for="">Phone</label>
                         <input type="text" name='phone' class="custom-input">
                     </div>
                 </div>
                 <div class="flex justify-center mt-8">
-                    <button class="btn-teal">Continue Shipping</button>
+                    <button class="btn-teal">Submit Now</button>
                 </div>
             </form>
         </div>

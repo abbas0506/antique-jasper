@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city')->nullable();
             $table->string('phone', 20);
+            $table->string('image', 50)->nullable();
             $table->string('courier')->nullable();
             $table->timestamp('shipped_at')->nullable();
             $table->string('shipment_note')->nullable();

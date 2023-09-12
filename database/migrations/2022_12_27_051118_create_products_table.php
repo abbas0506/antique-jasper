@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('color')->nullable();
             $table->string('gender', 1)->nullable();
             $table->string('image');
+
             $table->unsignedInteger('rating')->default(0);
 
             $table->unsignedBigInteger('subcategory_id');

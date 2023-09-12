@@ -12,22 +12,34 @@
         <label>Total Amount</label>
         <h4>Rs. {{ $order->amount() }}</h4>
         <div class="text-xs mt-2">*Amount is recieved through JazzCash</div>
-
     </div>
 
     <!-- page message -->
     @if($errors->any())
     <x-message :errors='$errors'></x-message>
     @endif
-
+    <div class="flex justify-center items-center space-x-2 font-semibold mt-4">
+        <h4 class="text-sm">Status:</h4>
+        <div class="bg-green-200 px-3 rounded-full text-sm">@if($order->status()==0)
+            <div class="rounded-full">Not paid</div>
+            @elseif($order->status()==1)
+            <div class="rounded-full">Shipping pending</div>
+            @else
+            <div class="rounded-full">Has been shipped</div>
+            @endif
+        </div>
+    </div>
     <form action="{{route('orders.update', $order)}}" method="post" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         @method('PATCH')
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 md:border border-slate-300 border-dotted mt-4 p-4 md:divide-x">
             <div class="flex flex-col justify-center items-center">
-                <img src="{{asset('images/payment/jazzcash.png')}}" alt="" class="24 w-24">
-                <h4 class="mt-4">03044933477</h4>
-                <label class="mt-2">*Please pay your charges through JazzCash and upload the receipt </label>
+                <div class="flex flex-col justify-center items-center">
+                    <img src="{{asset('images/payment/jazzcash.png')}}" alt="" class="24 w-24">
+                    <h4 class="mt-4">03044933477</h4>
+                    <label class="mt-2">*Please pay your charges through JazzCash and upload the receipt </label>
+                    <label class="mt-1">Uploading image size should be less than 5MB</label>
+                </div>
             </div>
             <div class="flex flex-col justify-center items-center">
                 <div class="flex flex-col justify-center items-center">
@@ -36,14 +48,14 @@
                 </div>
                 <div class="flex flex-col flex-1">
                     <label for="" class="mt-6">Payment Proof?</label>
-                    <input type="file" id='pic' name='image' placeholder="Image" class='py-2' onchange='preview_pic()' required>
+                    <input type="file" id='pic' name='image' placeholder="Image" class='py-2 w-48 md:w-64' onchange='preview_pic()' required>
                 </div>
 
             </div>
         </div>
-        <div class="flex justify-center items-center space-x-4 my-8">
-            <a href="{{route('orders.paylater',$order)}}" class="btn-orange rounded-none">I Shall Pay Later</a>
-            <button class="btn-teal">Upload Now</button>
+        <div class="flex flex-wrap justify-center items-center space-x-4 my-8">
+            <a href="{{route('orders.paylater',$order)}}" class="btn-orange rounded-none w-32 text-center">Upload Later</a>
+            <button class="btn-teal w-32 text-center">Upload Now</button>
         </div>
     </form>
 </div>

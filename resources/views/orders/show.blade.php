@@ -18,49 +18,52 @@
     <x-message></x-message>
     @endif
 
-    <table class="table-auto w-full">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Code</th>
-                <th class="text-left">Product</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($order->orderDetails as $orderDetail)
-            @php
-            $url = asset('images/products') . "/" . $orderDetail->product->image;
-            @endphp
+    <div class="w-full overflow-x-auto mt-4">
+        <table class="table-fixed w-full">
+            <thead>
+                <tr>
+                    <th class="w-16">Image</th>
+                    <th class="w-16">Code</th>
+                    <th class="text-left w-48">Product</th>
+                    <th class="w-12">Price</th>
+                    <th class="w-16">Qty</th>
+                    <th class="w-20">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($order->orderDetails as $orderDetail)
+                @php
+                $url = asset('images/products') . "/" . $orderDetail->product->image;
+                @endphp
 
-            <tr data-id="{{ $orderDetail->id }}">
-                <td>
-                    <div class="flex justify-center">
-                        <img src="{{$url}}" class="w-12">
-                    </div>
-                </td>
-                <td>{{$orderDetail->product->code}}</td>
-                <td class="text-left">{{$orderDetail->product->name}}</td>
-                <td>{{$orderDetail->product->price}}</td>
-                <td>
-                    <i class="bi-dash decQty px-1 bg-slate-200 hover:cursor-pointer"></i>
-                    <span class="quantity px-2">{{$orderDetail->qty}}</span>
-                    <i class="bi-plus incQty px-1 bg-slate-200 hover:cursor-pointer"></i>
-                </td>
-                <td>{{ $orderDetail->qty*$orderDetail->product->price }}</td>
-            </tr>
-            @endforeach
-            <!-- cart footer -->
-            <tr class="border-t font-semibold">
-                <td colspan="4"></td>
-                <td>Grand Total:</td>
-                <td>Rs. {{ $order->amount() }} /-</td>
-            </tr>
+                <tr data-id="{{ $orderDetail->id }}">
+                    <td>
+                        <div class="flex justify-center">
+                            <img src="{{$url}}" class="w-12">
+                        </div>
+                    </td>
+                    <td>{{$orderDetail->product->code}}</td>
+                    <td class="text-left">{{$orderDetail->product->name}}</td>
+                    <td>{{$orderDetail->product->price}}</td>
+                    <td>
+                        <div class="flex flex-nowrap justify-center items-center">
+                            <i class="bi-dash decQty px-1 bg-slate-200 hover:cursor-pointer"></i>
+                            <span class="quantity px-2">{{$orderDetail->qty}}</span>
+                            <i class="bi-plus incQty px-1 bg-slate-200 hover:cursor-pointer"></i>
+                        </div>
+                    </td>
+                    <td>{{ $orderDetail->qty*$orderDetail->product->price }}</td>
+                </tr>
+                @endforeach
+                <!-- cart footer -->
+                <tr class="border-t font-semibold">
+                    <td colspan="5" class="text-right">Grand Total:</td>
+                    <td>Rs. {{ $order->amount() }} /-</td>
+                </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
     <div class="flex justify-center mt-6">
         <a href="{{route('orders.payment',$order)}}" class="btn-teal tracking-wider">PAY NOW</a>
     </div>

@@ -76,7 +76,7 @@ Route::group(['middleware' => ['role:user']], function () {
 
 Route::resource('subcategories', SubcategoryController::class);
 Route::resource('products', ProductController::class);
-Route::get('products/filter/{type}/{val}', [ProductController::class, 'filter'])->name('products.filter');
+Route::get('products/filter/{filter}', [ProductController::class, 'filter'])->name('products.filter');
 // Route::post('products/search', [ProductController::class, 'search'])->name('products.search');
 Route::post('search', [SearchController::class, 'search']);
 // Route::resource('articles', ArticleController::class);
