@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('phone', 20);
             $table->string('receipt', 50)->nullable();
             $table->boolean('receipt_accepted')->nullable(); //receipt accepted
-            $table->string('receipt_note', 100)->nullable();
             $table->timestamp('shipped_at')->nullable();
-            $table->string('shipment_note')->nullable();
+            $table->string('note', 100)->nullable(); //if any
             $table->timestamps();
         });
     }
