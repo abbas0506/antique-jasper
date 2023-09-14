@@ -91,4 +91,9 @@ class CartController extends Controller
     {
         return view('cart.checkout');
     }
+    public function clear()
+    {
+        session()->forget('cart');
+        return redirect('cart/show')->with('success', 'Cart cleared successfully!');
+    }
 }

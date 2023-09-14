@@ -63,15 +63,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::resource('subcategories', AdminSubcategoryController::class);
     Route::resource('products', AdminProductController::class);
     Route::resource('orders', AdminOrderController::class);
+    Route::get('orders/ship/{order}', [AdminOrderController::class, 'ship']);
+    Route::get('orders/receipt/accept/{order}', [AdminOrderController::class, 'accept']);
+    Route::get('orders/receipt/reject/{order}', [AdminOrderController::class, 'reject']);
+    Route::get('pending', [AdminOrderController::class, 'pending']);
+    Route::get('shipped', [AdminOrderController::class, 'shipped']);
+    Route::get('rejected', [AdminOrderController::class, 'rejected']);
 
     Route::get('subcategories/add/{id}', [AdminSubcategoryController::class, 'add']);
     Route::get('products/add/{id}', [AdminProductController::class, 'add']);
-
-    // Route::resource('countries', CountryController::class);
-    // Route::resource('customers', CustomerController::class);
-    // Route::resource('couriers', CourierController::class);
-    // Route::resource('queries', QueryController::class);
 });
+
 Route::group(['middleware' => ['role:user']], function () {
     Route::view('user', 'user.index');
 });
@@ -87,6 +89,8 @@ Route::get('cart/add/{product}', [CartController::class, 'add'])->name('cart.add
 Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
 Route::patch('cart/update', [CartController::class, 'updateQty'])->name('cart.update');
 Route::get('cart/checkout', [CartController::class, 'checkout']);
+Route::get('cart/clear', [CartController::class, 'clear']);
+
 Route::resource('orders', OrderController::class);
 Route::view('tracking', 'orders.tracking');
 Route::post('orders/track', [OrderController::class, 'track']);

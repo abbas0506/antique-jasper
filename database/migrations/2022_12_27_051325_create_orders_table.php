@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('tracking_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('address');
+            $table->string('customer_name');
+            $table->string('shipping_address');
             $table->string('city')->nullable();
             $table->string('phone', 20);
-            $table->string('image', 50)->nullable();
-            $table->boolean('payment_verified')->default(false);
+            $table->string('receipt', 50)->nullable();
+            $table->boolean('receipt_accepted')->nullable(); //receipt accepted
+            $table->string('receipt_note', 100)->nullable();
             $table->timestamp('shipped_at')->nullable();
             $table->string('shipment_note')->nullable();
             $table->timestamps();

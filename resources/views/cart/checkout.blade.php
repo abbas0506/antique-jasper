@@ -17,24 +17,25 @@
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 mt-8">
                     <div class="">
-                        <label for="">First Name</label>
-                        <input type="text" name='first_name' class="custom-input">
-                    </div>
-                    <div class="">
-                        <label for="">Last Name</label>
-                        <input type="text" name='last_name' class="custom-input">
-                    </div>
-                    <div class="sm:col-span-2">
-                        <label for="">Address</label>
-                        <input type="text" name='address' class="custom-input">
+                        <label for="">Your Name</label>
+                        <input type="text" name='customer_name' class="custom-input">
                     </div>
                     <div class="">
                         <label for="">City</label>
                         <input type="text" name='city' class="custom-input">
                     </div>
+                    <div class="sm:col-span-2">
+                        <label for="">Shipping Address</label>
+                        <input type="text" name='shipping_address' class="custom-input">
+                    </div>
+
                     <div class="">
                         <label for="">Phone</label>
                         <input type="text" name='phone' class="custom-input">
+                    </div>
+                    <div class="">
+                        <label for="">Email (optional)</label>
+                        <input type="text" name='email' class="custom-input">
                     </div>
                 </div>
                 <div class="flex justify-center mt-8">

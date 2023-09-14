@@ -3,7 +3,13 @@
 @section('body')
 <x-guest.marquee></x-guest.marquee>
 <div class="container pt-32 min-h-[98vh]">
-    <h3>Cart Detail</h3>
+    <div class="flex justify-between items-center flex-wrap">
+        <h3>Cart Detail</h3>
+        @if(session('cart'))
+        <a href="{{url('cart/clear')}}" class="btn-red rounded-none">Clear Cart</a>
+        @endif
+    </div>
+
     <div class="w-full overflow-x-auto mt-4">
         <table class="table-fixed w-full">
             <thead>
@@ -50,15 +56,24 @@
                     <td colspan="5" class="text-right">Grand Total:</td>
                     <td>Rs. {{ $total }} /-</td>
                 </tr>
-
+                @else
+                <!-- cart empty -->
+                <tr>
+                    <td colspan="6">Cart empty!</td>
+                </tr>
                 @endif
+
             </tbody>
         </table>
     </div>
+
     <div class="flex flex-wrap justify-center items-center gap-2 mt-8">
         <a href="{{url('/')}}" class="btn-orange rounded-none w-48 text-center">Continue Shopping <span class="chevron-right pl-2"></span></a>
+        @if(session('cart'))
         <a href="{{url('cart/checkout')}}" class="btn-teal w-48 text-center"> <i class="bi bi-check pr-2"></i>Check Out</a>
+        @endif
     </div>
+
 
 </div>
 @endsection

@@ -10,13 +10,13 @@ class Order extends Model
     use HasFactory;
     protected $fillable = [
         'tracking_id',
-        'first_name',
-        'last_name',
-        'address',
+        'customer_name',
+        'shipping_address',
         'city',
         'phone',
-        'image', //receipt image
-        'payment_verified',
+        'receipt_image',    //receipt image
+        'receipt_accepted', //payment accepted
+        'receipt_note',     //if rejected
         'shipped_at',
         'shipment_note',
     ];
@@ -35,13 +35,17 @@ class Order extends Model
     }
     public function status()
     {
-        if ($this->image == null) {
-            return 'Not Paid'; //not paid
-        } else {
+        if ($this->receipt == null) {
+            return 'Receipt not uploaded';
+        } elseif ($this->receipt_accepted == null) {
+            return "Payment verification";
+        } elseif ($this->receipt_accepted == true) {
             if ($this->shipped_at == null)
-                return "Waiting for shipment"; //paid, but not shipped
+                return "Shipment ready";
             else
-                return "shipped"; //shipped
+                return "Shipment sent at " . $this->shipped_at;
+        } else {
+            return "Payment issue!";
         }
     }
 

@@ -8,7 +8,7 @@
         <div class="text-center">Order #: </div>
         <a href="{{route('orders.show', $order)}}" class="tracking-wider link">{{ $order->tracking_id }}</a>
     </div>
-    <div class="border-y flex flex-col justify-center items-center p-4 mt-4">
+    <div class="border-t flex flex-col justify-center items-center p-4 mt-4">
         <label>Total Amount</label>
         <h4>Rs. {{ $order->amount() }}</h4>
         <div class="text-xs mt-2">*Amount is recieved through JazzCash</div>
@@ -21,7 +21,7 @@
     <form action="{{route('orders.update', $order)}}" method="post" enctype="multipart/form-data" onsubmit="return validate(event)">
         @csrf
         @method('PATCH')
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 md:border border-slate-300 border-dotted mt-4 p-4 md:divide-x">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 md:border border-slate-300 border-dotted p-4 md:divide-x">
             <div class="flex flex-col justify-center items-center">
                 <div class="flex flex-col justify-center items-center">
                     <img src="{{asset('images/payment/jazzcash.png')}}" alt="" class="24 w-24">
@@ -36,13 +36,13 @@
                     <!-- <button type="submit" class="btn-blue w-60 py-2 mt-4">Upload Image</button> -->
                 </div>
                 <div class="flex flex-col flex-1">
-                    <label for="" class="mt-6">Payment Proof?</label>
-                    <input type="file" id='pic' name='image' placeholder="Image" class='py-2 w-48 md:w-64' onchange='preview_pic()' required>
+                    <label for="" class="mt-6">Receipt</label>
+                    <input type="file" id='pic' name='receipt_image' placeholder="Image" class='py-2 w-48 md:w-64' onchange='preview_pic()' required>
                 </div>
 
             </div>
         </div>
-        <div class="flex flex-wrap justify-center items-center space-x-4 my-8">
+        <div class="flex flex-wrap justify-center items-center gap-3 my-8">
             <a href="{{route('orders.paylater',$order)}}" class="btn-orange rounded-none w-32 text-center">Upload Later</a>
             <button class="btn-teal w-32 text-center">Upload Now</button>
         </div>

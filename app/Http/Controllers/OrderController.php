@@ -42,10 +42,9 @@ class OrderController extends Controller
         //
         $request->validate([
             // 'tracking_id' => 
-            'first_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'address' => 'required|max:200',
+            'customer_name' => 'required|max:100',
             'city' => 'max:50',
+            'shipping_address' => 'required|max:200',
             'phone' => 'required',
         ]);
 
@@ -109,35 +108,32 @@ class OrderController extends Controller
     {
         //
         $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'receipt_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
         try {
-            $image_name = '';
+            $receipt_name = '';
 
             //if user has changed image, replace existing image 
-            if ($request->hasFile('image')) {
-                $existing_image_url = public_path('images/payment/receipt/') . $order->image;
+            if ($request->hasFile('receipt_image')) {
+                $existing_receipt_url = public_path('images/payment/receipt/') . $order->receipt;
 
                 //remove existing image
-                if (File::exists($existing_image_url)) {
-                    File::delete($existing_image_url);
+                if (File::exists($existing_receipt_url)) {
+                    File::delete($existing_receipt_url);
                 }
 
                 //save uploaded image
-                $image_name = $order->id . '.' . $request->image->extension();
-                $request->file('image')->move(public_path('images/payment/receipt/'), $image_name);
+                $receipt_name = $order->id . '.' . $request->receipt_image->extension();
+                $request->file('receipt_image')->move(public_path('images/payment/receipt/'), $receipt_name);
             }
-
-            //update by raw input as it is
-            $order->update($request->all());
 
             //if image has been changed by user
             //replace uploaded image name by its formatted name
-            if ($image_name != '')
-                $order->image = $image_name;
+            if ($receipt_name != '')
+                $order->receipt = $receipt_name;
 
-            $order->save();
+            $order->update();
 
             return redirect()->route('orders.thanks', $order->id)->with('success', 'Successfully uploaded');
         } catch (Exception $e) {

@@ -65,7 +65,7 @@
         @apply md:pl-60 mt-16 bg-white;
     }
     .container {
-        @apply p-4 md:px-24 min-w-full bg-white;
+        @apply p-4 md:px-24 pt-16 min-w-full bg-white;
     }
     .bread-crumb {
         @apply flex flex-wrap items-center space-x-1 text-sm;

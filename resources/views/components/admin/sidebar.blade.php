@@ -7,8 +7,8 @@
         <ul class="flex flex-col space-y-4">
             <li>
                 <a href="{{url('/')}}">
-                    <i class="bi bi-grid-1x2"></i>
-                    <span class="ml-3">Dashboard</span>
+                    <i class="bi-house"></i>
+                    <span class="ml-3">Home</span>
                 </a>
             </li>
             <li>
@@ -17,20 +17,6 @@
                     <span class="ml-3">Products</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="bi bi-bag-check"></i>
-                    <span class="ml-3">Orders</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="bi bi-truck-flatbed"></i>
-                    <span class="ml-3"> Shipments</span>
-                </a>
-            </li>
-
             <li class="my-4 border-b"></li>
             <li>
                 <a href="{{route('users.changepw')}}">

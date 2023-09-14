@@ -4,6 +4,7 @@
 <x-guest.marquee></x-guest.marquee>
 <div class="container pt-32 min-h-[98vh]">
     <h3 class="mt-4 text-center tracking-widest">Order # {{ $order->tracking_id }}</h3>
+    <div class="text-sm text-center">{{ $order->created_at }}</div>
     <div class="border-y flex flex-col justify-center items-center p-4 mt-4">
         <label>Total Amount</label>
         <h4>Rs. {{ $order->amount() }}</h4>

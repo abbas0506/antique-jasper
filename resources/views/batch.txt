@@ -1,2 +1,1 @@
-insert into products(id,code,color,gender,price,image,rating,subcategory_id,created_at, updated_at) 
-SELECT id,code,color,gender,price,image,rating,subcategory_id,created_at, updated_at from aj.products;
+insert into products(id,name, code,color,gender,price,image,rating,subcategory_id,created_at, updated_at) SELECT id,name,code,color,gender,price,image,rating,subcategory_id,created_at, updated_at from aj.products;
